@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>IUPAT DC 711 App</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<link href="css/IUPATDC711.css" rel="stylesheet" type="text/css">
+<link href="css/jquery.mobile.icons.min.css" rel="stylesheet" type="text/css">
+<link href="css/custom.css" rel="stylesheet" type="text/css">
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	if (navigator.userAgent.match(/(iPad.*|iPhone.*|iPod.*);.*CPU.*OS (7|8|9)_\d/i)) {
+		$("body").addClass("ios7");
+		$("body").append('');
+	}
+});
+</script>
+<script type="text/javascript">
+// Improved "document ready".  
+// Ensures no collision with the $ symbol (other libraries use it), plus tighter, smaller 
+jQuery(function($) {
+     $.ajax({
+        type: "GET",
+        url: "http://dc711.net/api/get_category_posts/?category_id=7",
+        dataType: 'jsonp',
+        error: function(){
+            alert( 'Unable to load feed, Incorrect path or invalid feed' );
+        },
+        success: function(data) {
+            // light validation that there is data, and there are posts in the data
+            if ( ! data || ! data.hasOwnProperty('posts') ) {
+                alert("No posts or data!");
+                return;
+            }
+            
+            // Get the "set" div into a jQuery variable for convenience, readability
+            var set = $('<div data-role="collapsible-set">');
+            // Append the "set" div to the relevant newslist div
+            $('#newslist').append(set);
+            var html = '';
+            // Get the actual number of posts returned
+            var num = data.posts.length;
+            // Ensure that even if there's more than 10, we only show 10
+            num = Math.min(num, 10);
+            // Loop over the number (either actual number, or 10, whichever is smaller)
+            for ( var i = 0; i < num; i++ ) {
+                // First, check if that post exists....
+                if ( typeof data.posts[i] == 'undefined' ) {
+                    continue;
+                }
+                // assign to a local variable for more convenient access
+                var post = data.posts[i];
+                html += '<div data-role="collapsible">';
+                // defensive programming - ensure title exists before accessing
+                if ( post.hasOwnProperty('title') ) {
+                    html += '<h4 class="entry-title">' + post.title + '</h4>';
+                }
+                // defensive programming - ensure content exists before accessing
+                if ( post.hasOwnProperty('content') ) {
+                    html += '<div class="entry-content">' + post.content + '</div>';
+                }
+                html += '</div>';
+            }
+						
+            // Append the html to the set directly
+            set.append(html);
+						
+            // Ensure that "collapsibleset" function exists before calling it
+                // Because we already have "set" in a jQuery variable, just call collapsibleset directly on it
+                set.collapsibleset();
+
+        }
+    });
+});
+</script>
+<script type="text/javascript">
+// Improved "document ready".  
+// Ensures no collision with the $ symbol (other libraries use it), plus tighter, smaller 
+jQuery(function($) {
+     $.ajax({
+        type: "GET",
+        url: "http://dc711.net/api/get_category_posts/?category_id=8",
+        dataType: 'jsonp',
+        error: function(){
+            alert( 'Unable to load feed, Incorrect path or invalid feed' );
+        },
+        success: function(data) {
+            // light validation that there is data, and there are posts in the data
+            if ( ! data || ! data.hasOwnProperty('posts') ) {
+                alert("No posts or data!");
+                return;
+            }
+            
+            // Get the "set" div into a jQuery variable for convenience, readability
+            var set = $('<div data-role="collapsible-set">');
+            // Append the "set" div to the relevant newslist div
+            $('#meetingslist').append(set);
+            var html = '';
+            // Get the actual number of posts returned
+            var num = data.posts.length;
+            // Ensure that even if there's more than 10, we only show 10
+            num = Math.min(num, 10);
+            // Loop over the number (either actual number, or 10, whichever is smaller)
+            for ( var i = 0; i < num; i++ ) {
+                // First, check if that post exists....
+                if ( typeof data.posts[i] == 'undefined' ) {
+                    continue;
+                }
+                // assign to a local variable for more convenient access
+                var post = data.posts[i];
+                html += '<div data-role="collapsible">';
+                // defensive programming - ensure title exists before accessing
+                if ( post.hasOwnProperty('title') ) {
+                    html += '<h4 class="entry-title">' + post.title + '</h4>';
+                }
+                // defensive programming - ensure content exists before accessing
+                if ( post.hasOwnProperty('content') ) {
+                    html += '<div class="entry-content">' + post.content + '</div>';
+                }
+                html += '</div>';
+            }
+						
+            // Append the html to the set directly
+            set.append(html);
+						
+                // Because we already have "set" in a jQuery variable, just call collapsibleset directly on it
+                set.collapsibleset();
+
+        }
+    });
+});
+</script>
+</head>
+
+<body>
+<div data-role="page" id="page" data-theme="a">
+  <div data-role="header" data-theme="a" class="main-screen-header"><img class="banner" src="img/banner.jpg" alt="" width="100%" /></div>
+  <div data-role="content" class="main-nav-container">
+    <div class="ui-grid-a main-nav-grid" data-theme="a">
+      <div class="ui-block-a"><a href="#news" data-transition="slide"><img src="img/news-icon.png" width="50%" alt=""/><br />
+        News &amp; Alerts</a></div>
+      <div class="ui-block-b blue"><a href="#meetings" data-transition="slide"><img src="img/meetings-icon.png" width="50%" alt=""/><br />
+        Meetings</a></div>
+      <div class="ui-block-a blue"><a href="#calendar" data-transition="slide"><img src="img/calendar-icon.png" width="50%" alt=""/><br />
+        Calendar</a></div>
+      <div class="ui-block-b"><a href="#locals" data-transition="slide"><img src="img/locals-icon.png" width="50%" alt=""/><br />
+        Locals</a></div>
+      <div class="ui-block-a"><a href="#contact" data-transition="slide"><img src="img/contact-icon.png" width="50%" alt=""/><br />
+        Contact</a></div>
+      <div class="ui-block-b blue"><a href="#dispatch" data-transition="slide"><img src="img/dispatch-icon.png" width="50%" alt=""/><br />
+        Dispatch</a></div>
+    </div>
+  </div>
+  <div data-role="footer" data-theme="a" data-position="fixed">
+    <div class="social-media-links"> <a class="facebook" href="https://www.facebook.com/pages/DC-711/134238366621308" target="_blank"><i class="fa fa-facebook fa-fw"></i></a> <a class="twitter" href="https://twitter.com/IUPATDC711" target="_blank"><i class="fa fa-twitter fa-fw"></i></a> <a class="instagram" href="https://www.instagram.com/iupatdistrictcouncil711/" target="_blank"><i class="fa fa-instagram fa-fw"></i></a> <a class="youtube" href="https://www.youtube.com/channel/UCrdvk0m6OURMcMdrb3BSLfw" target="_blank"><i class="fa fa-youtube-play fa-fw"></i></a> <a class="site-icon" href="http://dc711.net/" target="_blank"><img src="img/site-icon.png" alt="" /></a> </div>
+  </div>
+</div>
+<div data-role="page" id="news" data-theme="a">
+  <div data-role="header" class="internal-header" data-add-back-btn="true" data-theme="a" data-position="fixed">
+    <h1>News &amp; Alerts</h1>
+  </div>
+  <div data-role="content">
+    <div id="newslist" class="newslist"></div>
+    <center>
+      <h2><a class="button" href="http://dc711.net/category/news/">View All Posts</a></h2>
+    </center>
+  </div>
+  <div data-role="footer" data-theme="a" data-position="fixed">
+    <div class="social-media-links"> <a class="facebook" href="https://www.facebook.com/pages/DC-711/134238366621308" target="_blank"><i class="fa fa-facebook fa-fw"></i></a> <a class="twitter" href="https://twitter.com/IUPATDC711" target="_blank"><i class="fa fa-twitter fa-fw"></i></a> <a class="instagram" href="https://www.instagram.com/iupatdistrictcouncil711/" target="_blank"><i class="fa fa-instagram fa-fw"></i></a> <a class="youtube" href="https://www.youtube.com/channel/UCrdvk0m6OURMcMdrb3BSLfw" target="_blank"><i class="fa fa-youtube-play fa-fw"></i></a> <a class="site-icon" href="http://dc711.net/" target="_blank"><img src="img/site-icon.png" alt="" /></a></div>
+  </div>
+</div>
+<div data-role="page" id="meetings" data-theme="a">
+  <div data-role="header" class="internal-header" data-add-back-btn="true" data-theme="a" data-position="fixed">
+    <h1>Meetings</h1>
+  </div>
+  <div data-role="content">
+    <div id="meetingslist" class="newslist"></div>
+    <center>
+      <h2><a class="button" href="http://dc711.net/category/meetings/">View All Posts</a></h2>
+    </center>
+  </div>
+  <div data-role="footer" data-theme="a" data-position="fixed">
+    <div class="social-media-links"> <a class="facebook" href="https://www.facebook.com/pages/DC-711/134238366621308" target="_blank"><i class="fa fa-facebook fa-fw"></i></a> <a class="twitter" href="https://twitter.com/IUPATDC711" target="_blank"><i class="fa fa-twitter fa-fw"></i></a> <a class="instagram" href="https://www.instagram.com/iupatdistrictcouncil711/" target="_blank"><i class="fa fa-instagram fa-fw"></i></a> <a class="youtube" href="https://www.youtube.com/channel/UCrdvk0m6OURMcMdrb3BSLfw" target="_blank"><i class="fa fa-youtube-play fa-fw"></i></a> <a class="site-icon" href="http://dc711.net/" target="_blank"><img src="img/site-icon.png" alt="" /></a></div>
+  </div>
+</div>
+<div data-role="page" id="calendar" data-theme="a">
+  <div data-role="header" class="internal-header" data-add-back-btn="true" data-theme="a" data-position="fixed">
+    <h1>Calendar</h1>
+  </div>
+  <div data-role="content" class="calendar-nav">
+      <div><a href="#core" data-transition="slide" class="blue"><img src="img/core-icon.png" width="25%" alt=""/><br />C.O.R.E.</a></div>
+      <div><a href="#picket" data-transition="slide"><img src="img/picket-icon.png" width="25%" alt=""/><br />Picket</a></div>
+      <div><a href="#training" data-transition="slide" class="blue"><img src="img/training-icon.png" width="25%" alt=""/><br />Training</a></div>
+  </div>
+  <div data-role="footer" data-theme="a" data-position="fixed">
+    <div class="social-media-links"> <a class="facebook" href="https://www.facebook.com/pages/DC-711/134238366621308" target="_blank"><i class="fa fa-facebook fa-fw"></i></a> <a class="twitter" href="https://twitter.com/IUPATDC711" target="_blank"><i class="fa fa-twitter fa-fw"></i></a> <a class="instagram" href="https://www.instagram.com/iupatdistrictcouncil711/" target="_blank"><i class="fa fa-instagram fa-fw"></i></a> <a class="youtube" href="https://www.youtube.com/channel/UCrdvk0m6OURMcMdrb3BSLfw" target="_blank"><i class="fa fa-youtube-play fa-fw"></i></a> <a class="site-icon" href="http://dc711.net/" target="_blank"><img src="img/site-icon.png" alt="" /></a></div>
+  </div>
+</div>
+<div data-role="page" id="locals" data-theme="a">
+  <div data-role="header" class="internal-header" data-add-back-btn="true" data-theme="a" data-position="fixed">
+    <h1>Locals</h1>
+  </div>
+  <div data-role="content">
+    <div data-role="collapsible-set">
+      <div data-role="collapsible">
+        <h3>District Council 711</h3>
+        <p>Meetings: 3rd Tuesday - 5:00pm<br />
+          Springfield, Brick and Winslow Halls*<br />
+          (videoconferenced)<br />
+          *except quarterly meetings, check with your agent for info.</p>
+        <hr />
+        <p><span style="text-decoration: underline;"><strong>Executive Board Officers</strong></span></p>
+        <p><strong>Business Manager/Secretary Treasurer:</strong> Vincent M. Lane<br />
+          <strong>President:</strong> Joseph Sullivan<br />
+          <strong>Vice President:</strong> Thomas Hoffmann<br />
+          <strong>Recording Secretary:</strong> John Arlotta<br />
+          <strong>Warden:</strong> James Gonnello</p>
+        <p><strong>Trustee Chairperson</strong><br />
+          Ronald Nosiay</p>
+        <p><strong>Trustees</strong><br />
+          Matthew Dietrich<br />
+          Tyrone White</p>
+      </div>
+      <div data-role="collapsible" data-collapsed="true">
+        <h3>Painters Local Union 277</h3>
+        <p>Business Agent: Todd Mitrushi<br>
+          Ph 609-653-4433 ext. *277<br>
+          Fax 609-653-0795</p>
+        <p>Meetings: 1st Tuesday - 5:30PM<br>
+          26 East Fleming Pike<br>
+          Hammonton, NJ 08037</p>
+        <hr>
+        <p><span style="text-decoration:underline; "><strong>Executive Board Officers</strong></span></p>
+        <p><strong>President:</strong> Daniel W. Gaskill Jr.<br>
+          <strong>Vice President:</strong> Paul L. Andrews<br>
+          <strong>Recording Secretary:</strong> Lawrence Errera<br>
+          <strong>Financial Secretary:</strong> Christine Taggart<br>
+          <strong>Treasurer:</strong> Timothy M. Venutolo<br>
+          <strong>Warden:</strong> Steven Frangoules</p>
+        <p><span style="text-decoration:underline; "><strong>Trustees<br>
+          </strong></span>George D'Augustine<br>
+          Pete Fuller<br>
+          Joseph Leeds Jr.</p>
+        <p><span style="text-decoration:underline; "><strong>Business Agent</strong></span><br>
+          Todd Mitrushi</p>
+        <p><span style="text-decoration:underline; "><strong>Delegates to the District Council</strong></span><br>
+          Todd Mitrushi<br>
+          Paul Andrews<br>
+          Patrice Atwell</p>
+      </div>
+      <div data-role="collapsible" data-collapsed="true">
+        <h3>Painters Local Union 694</h3>
+        <p>Business Agent: Robert Wood<br>
+          Ph 732-774-0932 ext. *694<br>
+          Fax 732-774-5078</p>
+        <p>Meetings: 2nd Wednesday - 6:00PM<br>
+          1629 Route 88<br>
+          Brick, NJ 08724</p>
+        <hr>
+        <p><span style="text-decoration:underline; "><strong>Executive Board Officers</strong></span></p>
+        <p><strong>President:</strong> John Hughes<br>
+          <strong>Vice President:</strong> Robert Lane<br>
+          <strong>Recording Secretary:</strong> Dave Archer<br>
+          <strong>Financial Secretary:</strong> Chris Wood<br>
+          <strong>Treasurer:</strong> John Marcotullio<br>
+          <strong>Warden:</strong> Thomas Donnellan</p>
+        <p><span style="text-decoration:underline; "><strong>Trustees</strong></span><br>
+          Mark Drzewiecki<br>
+          Gary Temple<br>
+          Elias Tsivis</p>
+        <p><span style="text-decoration:underline; "><strong>Business Agent</strong></span><br>
+          Robert Wood</p>
+        <p><span style="text-decoration:underline; "><strong>Delegates to the District Council</strong></span><br>
+          Robert Wood<br>
+          Raymond Burkhard<br>
+          John Foy<br>
+          Robert Lane<br>
+          Michael Rocha (Alt)</p>
+      </div>
+      <div data-role="collapsible" data-collapsed="true">
+        <h3>Painters Local Union 1004</h3>
+        <p>Business Agent: Joseph Estevez<br>
+          Ph 973-258-1601 ext. *1004<br>
+          Fax 973-258-1615</p>
+        <p>Meetings: 2nd Thursday - 5:30PM<br>
+          9 Fadem Road<br>
+          Springfield, NJ 07081</p>
+        <hr>
+        <p><span style="text-decoration:underline; "><strong>Executive Board Officers</strong></span></p>
+        <p><strong>President: </strong>Frank Alvarez<br>
+          <strong>Vice President:</strong> Tyrone White<br>
+          <strong>Recording Secretary: </strong>Theodore Markou<br>
+          <strong>Treasurer: </strong>Edward Uibelhoer<br>
+          <strong>Warden: </strong>Ludrick Freeman</p>
+        <p><span style="text-decoration:underline; "><strong>Trustees</strong></span><br>
+          William DeNicola<br>
+          Salvador Gude<br>
+          Gary Murden</p>
+        <p><span style="text-decoration:underline; "><strong>Business Agent</strong></span><br>
+          Joseph Estevez</p>
+        <p><span style="text-decoration:underline; "><strong>Delegates to the District Council</strong></span><br>
+          Joseph Estevez<br>
+          Frank Alvarez<br>
+          Theodore Markou<br>
+          Tyrone White<br>
+          John Marino (Alt)</p>
+      </div>
+      <div data-role="collapsible" data-collapsed="true">
+        <h3>Painters Local Union 1005</h3>
+        <p>Business Agent: Joseph Sullivan<br>
+          Ph 973-258-1601 ext. *1005<br>
+          Fax 973-258-1615</p>
+        <p>Meetings: 2nd Monday - 5:30PM<br>
+          9 Fadem Road<br>
+          Springfield, NJ 07081</p>
+        <hr>
+        <p><span style="text-decoration:underline; "><strong>Executive Board Officers</strong></span></p>
+        <p><strong>President:</strong> Christopher Cardinoza<br>
+          <strong>Vice President:</strong> David Rezes<br>
+          <strong>Recording Secretary:</strong> Clifford Kutyla<br>
+          <strong>Financial Secretary:</strong> Dennis Caflin<br>
+          <strong>Treasurer:</strong> Lawrence Adrianse<br>
+          <strong>Warden:</strong> Michael Schmid</p>
+        <p><strong>Trustees</strong><br>
+          Thomas Giuliano<br>
+          Harold Hayden<br>
+          Dan Pawelczyk</p>
+        <p><strong>Business Agent</strong><br>
+          Joseph Sullivan</p>
+        <p><strong>Delegates to the District Council</strong><br>
+          Joseph Sullivan<br>
+          Christopher Cardinoza<br>
+          Clifford Kutyla<br>
+          David Rezes<br>
+          Lawrence Adrianse (Alt)</p>
+      </div>
+      <div data-role="collapsible" data-collapsed="true">
+        <h3>Painters Local Union 1007</h3>
+        <p>Business Agent: Andrew Scala<br>
+          Ph 973-258-1601 ext. *1007<br>
+          Fax 973-258-1615</p>
+        <p>Meetings: 1st Wednesday - 6:00PM<br>
+          9 Fadem Rd<br>
+          Springfield, NJ 07081</p>
+        <hr>
+        <p><span style="text-decoration:underline; "><strong>Executive Board Officers</strong></span></p>
+        <p><strong>President: </strong>Randy Fila<br>
+          <strong>Vice President: </strong>Gary Thumm<br>
+          <strong>Recording Secretary: </strong>John Varga<br>
+          <strong>Financial Secretary: </strong>Mark Taylor<br>
+          <strong>Treasurer: </strong>Jason Fredericks<br>
+          <strong>Sergeant at Arms: </strong>Peter Arvanetes</p>
+        <p><strong>Trustees</strong><br>
+          John Pepe<br>
+          Donald Umhoefer</p>
+        <p><strong>Business Agent</strong><br>
+          Andrew Scala</p>
+        <p><strong>Delegates to the District Council</strong><br>
+          Andrew Scala<br>
+          Vincent Pat Charles<br>
+          Jason Fredericks<br>
+          Ralph Scala<br>
+          Gary Thumm</p>
+      </div>
+      <div data-role="collapsible" data-collapsed="true">
+        <h3>Glaziers Local Union 1009</h3>
+        <p>Business Agent: Thomas Hoffman<br>
+          Ph 973-258-1601 ext. *1009<br>
+          Fax 732-774-5078</p>
+        <p>Meetings: 2nd Tuesday - 5:30PM<br>
+          9 Fadem Road<br>
+          Springfield, NJ 07081</p>
+        <hr>
+        <p><span style="text-decoration:underline; "><strong>Executive Board Officers</strong></span></p>
+        <p><strong>President:</strong> Matthew Dietrich<br>
+          <strong>Vice President:</strong> Albert Galvez<br>
+          <strong>Recording Secretary:</strong> Michael Neri<br>
+          <strong>Financial Secretary:</strong> Michael Bauman<br>
+          <strong>Treasurer:</strong> Jude DeChara<br>
+          <strong>Sergeant at Arms:</strong> Robert Messick<br>
+          <strong>Conductor:</strong> David Yuhasz</p>
+        <p><strong>Trustees</strong><br>
+          James Gonnello<br>
+          Richard Liput<br>
+          Charles Vanderstarre</p>
+        <p><strong>Business Agent</strong><br>
+          Thomas Hoffmann</p>
+        <p><strong>Business Rep</strong><br>
+          Bernard Cooke</p>
+        <p><strong>Delegates to the District Council</strong><br>
+          Thomas Hoffman<br>
+          Charles Messick<br>
+          Bernard Cooke<br>
+          Scott Cymanski<br>
+          Matthew Dietrich<br>
+          Albert Galvez<br>
+          James Gonello<br>
+          Frank Burke (Alt)</p>
+      </div>
+      <div data-role="collapsible" data-collapsed="true">
+        <h3>Paint Makers Local Union 1310</h3>
+        <p>Business Rep: District Council 711<br>
+          Ph 973-258-1601<br>
+          Fax 973-258-1615</p>
+        <p>Meetings: 3rd Monday - 5:30PM<br>
+          9 Fadem Road<br>
+          Springfield, NJ 07081</p>
+        <hr>
+        <p><span style="text-decoration:underline; "><strong>Executive Board Officers</strong></span></p>
+        <p><strong>President: </strong>Frank Teran<br>
+          <strong>Vice President: </strong>Juan Badillo Jr<br>
+          <strong>Recording Secretary: </strong>John Lupo<br>
+          <strong>Financial Secretary: </strong>Paul Tropeano<br>
+          <strong>Treasurer: </strong>Paul Tropeano<br>
+          <strong>Warden: </strong>Wilbert Barno</p>
+        <p><strong>Trustees</strong><br>
+          MacArthur Bynum<br>
+          Charles Philipone<br>
+          Anthony Turner</p>
+        <p><strong>Business Rep</strong><br>
+          Joseph Estevez<br>
+          Joseph Sullivan</p>
+        <p><strong>Delegates to the District Council</strong><br>
+          Paul Tropeano<br>
+          Wilbert Barno (Alt)</p>
+      </div>
+      <div data-role="collapsible" data-collapsed="true">
+        <h3>Industrial Painters Local Union 1331</h3>
+        <p>Business Rep: Dean Winters<br>
+          Ph 609-653-4433 ext. *1331<br>
+          Fax 609-653-0795</p>
+        <p>Meetings; 1st Monday - 6:00PM<br>
+          9 Fadem Road<br>
+          Springfield, NJ 07081<br>
+          and<br>
+          26 East Fleming Pike<br>
+          Hammonton, NJ 08037</p>
+        <hr>
+        <p><span style="text-decoration:underline; "><strong>Executive Board Officers</strong></span></p>
+        <p><strong>President:</strong> Ken Alcott<br>
+          <strong>Vice President:</strong> Paul Vaughn<br>
+          <strong>Recording Secretary:</strong> Matheus DeMoraes<br>
+          <strong>Financial Secretary:</strong> Mike Shannon<br>
+          <strong>Treasurer:</strong> John Drummond<br>
+          <strong>Warden:</strong> Al Buda<br>
+          <strong>Sergeant at Arms:</strong> Walt Houser</p>
+        <p><strong>Trustees</strong><br>
+          Jeff Alcott<br>
+          Rui Martins<br>
+          Allen Sattler<br>
+          Witold Wronski</p>
+        <p><strong>Business Agent</strong><br>
+          Thomas Nestopoulos<br>
+          Business Rep<br>
+          Dean Winters</p>
+        <p><strong>Delegates to the District Council</strong><br>
+          Thomas Nestopolous<br>
+          Kenneth Alcott<br>
+          Daniel Betancur<br>
+          Marcio Broday<br>
+          Rui Martins<br>
+          Michael Shannon<br>
+          Vito Wronski<br>
+          Dean Winters (Alt)</p>
+      </div>
+      <div data-role="collapsible" data-collapsed="true">
+        <h3>Drywall Finishers Local Union 1976</h3>
+        <p>Business Agent: Joseph Barry<br>
+          Ph 732-774-0932 ext. *1976<br>
+          Fax 732-774-5078</p>
+        <p>Meetings: 1st Thursday - 5:00PM<br>
+          9 Fadem Road<br>
+          Springfield, NJ 07081<br>
+          and<br>
+          26 East Fleming Pike<br>
+          Hammonton, NJ 08037</p>
+        <hr>
+        <p><span style="text-decoration:underline; "><strong>Executive Board Officers</strong></span></p>
+        <p><strong>President:</strong> Ronald Nosiay<br>
+          <strong>Vice President:</strong> Thomas Carpenter<br>
+          <strong>Recording Secretary:</strong> Theodore Ujfalussy<br>
+          <strong>Financial Secretary:</strong> Robert Wosnik<br>
+          <strong>Treasurer:</strong> Peter Schiro<br>
+          <strong>Warden:</strong> Wayne Taylor</p>
+        <p><strong>Trustees</strong><br>
+          Dennis Deehan<br>
+          Arnis Izaks<br>
+          Robert Johnson<br>
+          Business Agent<br>
+          Joseph Barry</p>
+        <p><strong>Business Rep</strong><br>
+          Michael Kisielewski<br>
+          Joseph Sanchelli<br>
+          David Schlick</p>
+        <p><strong>Delegates to the District Council</strong><br>
+          Joseph Barry<br>
+          Arnis Izaks<br>
+          Robert Johnson<br>
+          David Schlick<br>
+          Theodore Ujfalussy<br>
+          Robert Wosnik<br>
+          Edwin Arlequin (Alt)</p>
+      </div>
+    </div>
+  </div>
+  <div data-role="footer" data-theme="a" data-position="fixed">
+    <div class="social-media-links"> <a class="facebook" href="https://www.facebook.com/pages/DC-711/134238366621308" target="_blank"><i class="fa fa-facebook fa-fw"></i></a> <a class="twitter" href="https://twitter.com/IUPATDC711" target="_blank"><i class="fa fa-twitter fa-fw"></i></a> <a class="instagram" href="https://www.instagram.com/iupatdistrictcouncil711/" target="_blank"><i class="fa fa-instagram fa-fw"></i></a> <a class="youtube" href="https://www.youtube.com/channel/UCrdvk0m6OURMcMdrb3BSLfw" target="_blank"><i class="fa fa-youtube-play fa-fw"></i></a> <a class="site-icon" href="http://dc711.net/" target="_blank"><img src="img/site-icon.png" alt="" /></a></div>
+  </div>
+</div>
+<div data-role="page" id="contact" data-theme="a">
+  <div data-role="header" class="internal-header" data-add-back-btn="true" data-theme="a" data-position="fixed">
+    <h1>Contact</h1>
+  </div>
+  <div data-role="content"> Content </div>
+  <div data-role="footer" data-theme="a" data-position="fixed">
+    <div class="social-media-links"> <a class="facebook" href="https://www.facebook.com/pages/DC-711/134238366621308" target="_blank"><i class="fa fa-facebook fa-fw"></i></a> <a class="twitter" href="https://twitter.com/IUPATDC711" target="_blank"><i class="fa fa-twitter fa-fw"></i></a> <a class="instagram" href="https://www.instagram.com/iupatdistrictcouncil711/" target="_blank"><i class="fa fa-instagram fa-fw"></i></a> <a class="youtube" href="https://www.youtube.com/channel/UCrdvk0m6OURMcMdrb3BSLfw" target="_blank"><i class="fa fa-youtube-play fa-fw"></i></a> <a class="site-icon" href="http://dc711.net/" target="_blank"><img src="img/site-icon.png" alt="" /></a></div>
+  </div>
+</div>
+<div data-role="page" id="dispatch" data-theme="a">
+  <div data-role="header" class="internal-header" data-add-back-btn="true" data-theme="a" data-position="fixed">
+    <h1>Dispatch</h1>
+  </div>
+  <div data-role="content"> Content </div>
+  <div data-role="footer" data-theme="a" data-position="fixed">
+    <div class="social-media-links"> <a class="facebook" href="https://www.facebook.com/pages/DC-711/134238366621308" target="_blank"><i class="fa fa-facebook fa-fw"></i></a> <a class="twitter" href="https://twitter.com/IUPATDC711" target="_blank"><i class="fa fa-twitter fa-fw"></i></a> <a class="instagram" href="https://www.instagram.com/iupatdistrictcouncil711/" target="_blank"><i class="fa fa-instagram fa-fw"></i></a> <a class="youtube" href="https://www.youtube.com/channel/UCrdvk0m6OURMcMdrb3BSLfw" target="_blank"><i class="fa fa-youtube-play fa-fw"></i></a> <a class="site-icon" href="http://dc711.net/" target="_blank"><img src="img/site-icon.png" alt="" /></a></div>
+  </div>
+</div>
+<div data-role="page" id="core" data-theme="a">
+  <div data-role="header" class="internal-header" data-add-back-btn="true" data-theme="a" data-position="fixed">
+    <h1>C.O.R.E. Calendar</h1>
+  </div>
+  <div data-role="content"> Content </div>
+  <div data-role="footer" data-theme="a" data-position="fixed">
+    <div class="social-media-links"> <a class="facebook" href="https://www.facebook.com/pages/DC-711/134238366621308" target="_blank"><i class="fa fa-facebook fa-fw"></i></a> <a class="twitter" href="https://twitter.com/IUPATDC711" target="_blank"><i class="fa fa-twitter fa-fw"></i></a> <a class="instagram" href="https://www.instagram.com/iupatdistrictcouncil711/" target="_blank"><i class="fa fa-instagram fa-fw"></i></a> <a class="youtube" href="https://www.youtube.com/channel/UCrdvk0m6OURMcMdrb3BSLfw" target="_blank"><i class="fa fa-youtube-play fa-fw"></i></a> <a class="site-icon" href="http://dc711.net/" target="_blank"><img src="img/site-icon.png" alt="" /></a></div>
+  </div>
+</div>
+<div data-role="page" id="picket" data-theme="a">
+  <div data-role="header" class="internal-header" data-add-back-btn="true" data-theme="a" data-position="fixed">
+    <h1>Picket Calendar</h1>
+  </div>
+  <div data-role="content">
+    <iframe style="border: solid 1px #777;" src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showTz=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23c0c0c0&amp;src=picket%40dc711.net&amp;color=%2329527A&amp;src=en.usa%23holiday%40group.v.calendar.google.com&amp;color=%23125A12&amp;ctz=America%2FNew_York" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+  </div>
+  <div data-role="footer" data-theme="a" data-position="fixed">
+    <div class="social-media-links"> <a class="facebook" href="https://www.facebook.com/pages/DC-711/134238366621308" target="_blank"><i class="fa fa-facebook fa-fw"></i></a> <a class="twitter" href="https://twitter.com/IUPATDC711" target="_blank"><i class="fa fa-twitter fa-fw"></i></a> <a class="instagram" href="https://www.instagram.com/iupatdistrictcouncil711/" target="_blank"><i class="fa fa-instagram fa-fw"></i></a> <a class="youtube" href="https://www.youtube.com/channel/UCrdvk0m6OURMcMdrb3BSLfw" target="_blank"><i class="fa fa-youtube-play fa-fw"></i></a> <a class="site-icon" href="http://dc711.net/" target="_blank"><img src="img/site-icon.png" alt="" /></a></div>
+  </div>
+</div>
+<div data-role="page" id="training" data-theme="a">
+  <div data-role="header" class="internal-header" data-add-back-btn="true" data-theme="a" data-position="fixed">
+    <h1>Training Calendar</h1>
+  </div>
+  <div data-role="content"> Content </div>
+  <div data-role="footer" data-theme="a" data-position="fixed">
+    <div class="social-media-links"> <a class="facebook" href="https://www.facebook.com/pages/DC-711/134238366621308" target="_blank"><i class="fa fa-facebook fa-fw"></i></a> <a class="twitter" href="https://twitter.com/IUPATDC711" target="_blank"><i class="fa fa-twitter fa-fw"></i></a> <a class="instagram" href="https://www.instagram.com/iupatdistrictcouncil711/" target="_blank"><i class="fa fa-instagram fa-fw"></i></a> <a class="youtube" href="https://www.youtube.com/channel/UCrdvk0m6OURMcMdrb3BSLfw" target="_blank"><i class="fa fa-youtube-play fa-fw"></i></a> <a class="site-icon" href="http://dc711.net/" target="_blank"><img src="img/site-icon.png" alt="" /></a></div>
+  </div>
+</div>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+	app.initialize();
+</script>
+</body>
+</html>
