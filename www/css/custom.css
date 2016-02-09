@@ -106,13 +106,13 @@ a {
 	display: block;
 	padding: 25px 15px;
 	background-color: #ffffff;
-	color: #292929;
+	color: #292929 !important;
 	text-shadow: none;
 }
 
 .main-nav-grid div.blue a {
 	background-color: #1c66a6;
-	color: #ffffff;
+	color: #ffffff !important;
 }
 
 .main-nav-grid div a:hover {
@@ -124,17 +124,21 @@ a {
 	display: block;
 	text-align: center;
 	background-color: #ffffff;
-	color: #292929;
+	color: #292929 !important;
 	text-shadow: none;
 	padding: 20px 15px;
 }
 
 .calendar-nav div a.blue {
 	background-color: #1c66a6;
-	color: #ffffff;
+	color: #ffffff !important;
 }
 
 .calendar-nav div a:hover {
 	background-color: #292929 !important;
 	color: #ffffff !important;
+}
+
+#dispatchfeed {
+	font-size: 0.75em;
 }

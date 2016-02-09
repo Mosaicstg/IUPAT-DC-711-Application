@@ -27,7 +27,7 @@ jQuery(function($) {
             // Loop over the number (either actual number, or 10, whichever is smaller)
             for ( var i = 0; i < num; i++ ) {
                 // First, check if that post exists....
-                if ( typeof data.posts[i] == 'undefined' ) {
+                if ( typeof data.posts[i] === 'undefined' ) {
                     continue;
                 }
                 // assign to a local variable for more convenient access
