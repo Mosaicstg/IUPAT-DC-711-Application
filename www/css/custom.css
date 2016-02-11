@@ -139,6 +139,15 @@ a {
 	color: #ffffff !important;
 }
 
-#dispatchfeed {
+.dispatch-feed {
 	font-size: 0.75em;
+}
+
+.dispatch-feed .bold {
+	font-weight: bold;
+	color: #f2c642;
+	text-align: center;
+}
+
+.dispatch-feed [id*="C"].ww-v, .dispatch-feed [id*="F"].ww-v {
 }
