@@ -140,7 +140,7 @@ function outputCalendarEvents(data, elem, key) {
 	data = data.items || data;
 	elem = $( elem );
 	// Remove all existing items from the DOM
-	elem.find('p[data-event-id]' ).remove();
+	elem.find('[data-event-id]' ).remove();
 	// Loop over the refreshed / new items to display
 	$.each( data, function (k, n) {
 		console.log(k, n);
