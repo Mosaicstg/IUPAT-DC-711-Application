@@ -164,3 +164,15 @@ div[data-event-id] .details {
 .newslist iframe {
 	width: 100% !important;
 }
+
+.details .summary {
+	margin: 15px 0;
+}
+
+.details .button {
+	margin: 15px auto 10px;
+}
+
+.event {
+	margin: 15px 0;
+}

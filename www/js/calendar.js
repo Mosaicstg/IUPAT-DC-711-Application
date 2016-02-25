@@ -159,14 +159,14 @@ function outputCalendarEvents(data, elem, key) {
 		var dateDisplay = formatDates( start, end );
 		start = moment( getDate( start ), DATE_FORMAT_GOOGLE );
 		end = moment( getDate( end ), DATE_FORMAT_GOOGLE );
-		var html = '<div data-event-id="' + k + '" data-event-key="' + key + '">' +
-			'<span class="date">' + dateDisplay + '</span>' +
+		var html = '<div class="event" data-event-id="' + k + '" data-event-key="' + key + '">' +
+			'<span class="date">' + dateDisplay + '</span>' + ' ' +
 			'<span class="display-name">' + (n.displayName || n.summary) + '</span>' +
-			'<p class="details">' +
-			'<span class="start-date">' + start.format( DATE_FORMAT_FULL ) + '</span>' +
-			'<span class="end-date">' + end.format( DATE_FORMAT_FULL ) + '</span>' +
-			'<span class="summary">' + n.summary + '</span>' +
-			'<a href="javascript:void(0);" class="add_calendar_event">+ Add Event</a></div>';
+			'<p data-theme="a" data-form="ui-body-a" class="ui-body ui-body-a ui-corner-all details">' +
+			// '<span class="start-date">' + start.format( DATE_FORMAT_TIME_ONLY ) + '</span>' + '<br />'+
+			// '<span class="end-date">' + end.format( DATE_FORMAT_TIME_ONLY ) + '</span>' + '<br />' +
+			'<span class="summary">' + n.summary + '</span>' + '<br />' +
+			'<a href="javascript:void(0);" class="add_calendar_event button">+ Add Event</a></div>';
 		'</p>' +
 		elem.append( html );
 	} );
