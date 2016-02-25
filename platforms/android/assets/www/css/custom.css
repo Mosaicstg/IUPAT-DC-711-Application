@@ -151,3 +151,16 @@ a {
 
 .dispatch-feed [id*="C"].ww-v, .dispatch-feed [id*="F"].ww-v {
 }
+
+div[data-event-id] .details {
+	display: none;
+}
+
+.newslist img {
+	width: 100% !important;
+	height: auto !important;
+}
+
+.newslist iframe {
+	width: 100% !important;
+}

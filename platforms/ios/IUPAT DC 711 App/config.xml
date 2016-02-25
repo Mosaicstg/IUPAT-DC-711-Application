@@ -17,6 +17,9 @@
     <feature name="Calendar">
         <param name="ios-package" value="Calendar" />
     </feature>
+    <feature name="Notification">
+        <param name="ios-package" value="CDVNotification" />
+    </feature>
     <allow-intent href="itms:*" />
     <allow-intent href="itms-apps:*" />
     <name>IUPAT DC 711 App</name>

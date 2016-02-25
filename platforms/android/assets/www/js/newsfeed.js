@@ -1,7 +1,8 @@
 // Improved "document ready".  
 // Ensures no collision with the $ symbol (other libraries use it), plus tighter, smaller 
 jQuery(function($) {
-     $.ajax({
+    // TODO: Joe, I'd recommend using the "local storage" functions (See the "calendar" file for storage usage examples)
+    $.ajax({
         type: "GET",
         url: "http://dc711.net/api/get_category_posts/?category_id=7",
         dataType: 'jsonp',

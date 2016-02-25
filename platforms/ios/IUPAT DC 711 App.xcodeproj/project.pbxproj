@@ -42,6 +42,9 @@
 		32DAC782D7354FA6B98B3E46 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = EF91DCC7E71645138E147ED6 /* Calendar.m */; };
 		F94A9DB82C98429F98F7E557 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD7E92B14D2F4272816C03DC /* EventKit.framework */; };
 		E85B6A90160748179E6AAC66 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB8B2BE025F04D7EB5171518 /* EventKitUI.framework */; };
+		B436AB57C98F43038211EAC9 /* CDVNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6DED9D26554D5CB0A08824 /* CDVNotification.m */; };
+		D99403FF5723466EADF37D08 /* CDVNotification.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 991737BA403242F495138B5E /* CDVNotification.bundle */; };
+		4109F9DA9B3E4D2BA266F024 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5917752C124DDDAD5D481B /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +114,10 @@
 		0369540CFA3C4525B61D2DB2 /* Calendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Calendar.h"; path = "cordova-plugin-calendar/Calendar.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		DD7E92B14D2F4272816C03DC /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "EventKit.framework"; path = "System/Library/Frameworks/EventKit.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 		FB8B2BE025F04D7EB5171518 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "EventKitUI.framework"; path = "System/Library/Frameworks/EventKitUI.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		5B6DED9D26554D5CB0A08824 /* CDVNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVNotification.m"; path = "cordova-plugin-dialogs/CDVNotification.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		D764131DAA744C81944F945C /* CDVNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVNotification.h"; path = "cordova-plugin-dialogs/CDVNotification.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		991737BA403242F495138B5E /* CDVNotification.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = "CDVNotification.bundle"; path = "CDVNotification.bundle"; sourceTree = "<group>"; };
+		2E5917752C124DDDAD5D481B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +131,7 @@
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
 				F94A9DB82C98429F98F7E557 /* EventKit.framework in Frameworks */,
 				E85B6A90160748179E6AAC66 /* EventKitUI.framework in Frameworks */,
+				4109F9DA9B3E4D2BA266F024 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +193,7 @@
 				308D052D1370CCF300D202BF /* icons */,
 				308D05311370CCF300D202BF /* splash */,
 				8D1107310486CEB800E47090 /* IUPAT DC 711 App-Info.plist */,
+				991737BA403242F495138B5E /* CDVNotification.bundle */,
 			);
 			name = Resources;
 			path = "IUPAT DC 711 App/Resources";
@@ -198,6 +207,7 @@
 				305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */,
 				DD7E92B14D2F4272816C03DC /* EventKit.framework */,
 				FB8B2BE025F04D7EB5171518 /* EventKitUI.framework */,
+				2E5917752C124DDDAD5D481B /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -215,6 +225,8 @@
 			children = (
 				EF91DCC7E71645138E147ED6 /* Calendar.m */,
 				0369540CFA3C4525B61D2DB2 /* Calendar.h */,
+				5B6DED9D26554D5CB0A08824 /* CDVNotification.m */,
+				D764131DAA744C81944F945C /* CDVNotification.h */,
 			);
 			name = Plugins;
 			path = "IUPAT DC 711 App/Plugins";
@@ -368,6 +380,7 @@
 				7E7966E11810823500FA85AD /* icon-50@2x.png in Resources */,
 				7E7966E51810823500FA85AD /* icon-76@2x.png in Resources */,
 				30FC414916E50CA1004E6F35 /* icon-72@2x.png in Resources */,
+				D99403FF5723466EADF37D08 /* CDVNotification.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +413,7 @@
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				32DAC782D7354FA6B98B3E46 /* Calendar.m in Sources */,
+				B436AB57C98F43038211EAC9 /* CDVNotification.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

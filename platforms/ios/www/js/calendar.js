@@ -114,10 +114,10 @@ function updateCalendar(force) {
 		singleEvents: true
 	};
 
-	var calendarCallback = function(elem, key) {
-		return function(data) {
+	var calendarCallback = function (elem, key) {
+		return function (data) {
 			var calendarKey = 'calendar:' + key;
-			storage.save(calendarKey, data.items);
+			storage.save( calendarKey, data.items );
 			outputCalendarEvents( data.items, elem, key );
 		}
 	}
@@ -136,10 +136,10 @@ function updateCalendar(force) {
 					doLog( textStatus );
 					doLog( errorThrown );
 				},
-				success: calendarCallback(elem, key)
+				success: calendarCallback( elem, key )
 			} );
 		} else {
-			var data = storage.get(calendarKey);
+			var data = storage.get( calendarKey );
 			outputCalendarEvents( storage.get( calendarKey ), elem, key );
 		}
 	}
@@ -150,30 +150,30 @@ function outputCalendarEvents(data, elem, key) {
 	data = data.items || data;
 	elem = $( elem );
 	// Remove all existing items from the DOM
-	elem.find('[data-event-id]' ).remove();
+	elem.find( '[data-event-id]' ).remove();
 	// Loop over the refreshed / new items to display
 	$.each( data, function (k, n) {
 		//console.log(k, n);
 		var start = n.start;
 		var end = n.end;
-		var dateDisplay = formatDates(start, end);
-		start = moment( getDate(start), DATE_FORMAT_GOOGLE );
-		end = moment( getDate(end), DATE_FORMAT_GOOGLE );
+		var dateDisplay = formatDates( start, end );
+		start = moment( getDate( start ), DATE_FORMAT_GOOGLE );
+		end = moment( getDate( end ), DATE_FORMAT_GOOGLE );
 		var html = '<div data-event-id="' + k + '" data-event-key="' + key + '">' +
-				'<span class="date">' + dateDisplay + '</span>' +
-				'<span class="display-name">' + (n.displayName || n.summary) + '</span>' +
-				'<p class="details">' +
-						'<span class="start-date">' + start.format(DATE_FORMAT_FULL) + '</span>' +
-						'<span class="end-date">' + end.format(DATE_FORMAT_FULL) + '</span>' +
-						'<span class="summary">' + n.summary + '</span>' +
-						'<a href="javascript:void(0);" class="add_calendar_event">+ Add Event</a></div>';
-				'</p>' +
+			'<span class="date">' + dateDisplay + '</span>' +
+			'<span class="display-name">' + (n.displayName || n.summary) + '</span>' +
+			'<p class="details">' +
+			'<span class="start-date">' + start.format( DATE_FORMAT_FULL ) + '</span>' +
+			'<span class="end-date">' + end.format( DATE_FORMAT_FULL ) + '</span>' +
+			'<span class="summary">' + n.summary + '</span>' +
+			'<a href="javascript:void(0);" class="add_calendar_event">+ Add Event</a></div>';
+		'</p>' +
 		elem.append( html );
 	} );
 }
 
 function getDate(d) {
-	return (d.hasOwnProperty('date')) ? d.date : d.dateTime;
+	return (d.hasOwnProperty( 'date' )) ? d.date : d.dateTime;
 }
 
 function formatDates(start, end) {
@@ -236,8 +236,8 @@ function addEvent(elem) {
 	 */
 	var event = elem.closest( '[data-event-id]' );
 	var id = event.data( 'event-id' );
-	var key = event.data( 'event-key' );
-	var events = localCalendarData[key];
+	var calendarKey = 'calendar:' + event.data( 'event-key' );
+	var events = storage.get( calendarKey );
 	var event = events[id];
 
 	var startDate = getDateFromEvent( event.start );
@@ -247,7 +247,7 @@ function addEvent(elem) {
 
 	//console.log( "Adding", event.displayName, '', event.summary, startDate, endDate );
 
-	window.plugins.calendar.createEvent( event.displayName, '', event.summary, startDate, endDate, addEventSuccess, addEventError );
+	window.plugins.calendar.createEvent( event.summary, '', event.summary, startDate, endDate, addEventSuccess, addEventError );
 }
 
 function getDateFromEvent(date) {
@@ -256,11 +256,24 @@ function getDateFromEvent(date) {
 
 
 function addEventSuccess(message) {
-	alert( message );
+	localAlert( 'Event added to your calendar.', phoneGapAlert, 'Success', 'OK, Thanks' );
 }
 
 function addEventError(message) {
-	alert( message );
+	localAlert( 'Event could not be added to your calendar: ' + message, phoneGapAlert, 'Error', 'OK' );
+}
+
+function localAlert(message, callBack, title, buttons) {
+	// Only attempt to run the "native" alerts if it is loaded
+	if ( navigator.notification.alert ) {
+		navigator.notification.alert( message, callBack, title, buttons );
+	} else {
+		alert( message );
+	}
+}
+
+// Function called when an alert gets dismissed
+function phoneGapAlert() {
 }
 
 var storage = (function () {
@@ -278,48 +291,48 @@ var storage = (function () {
 	}
 
 	function isDataStale(key, comparison) {
-		if ( ! localStorage[key] || ! getSaveDate(key)) {
+		if ( ! localStorage[key] || ! getSaveDate( key ) ) {
 			return true;
 		}
 
-		if (localStorage[key] == '[]') {
+		if ( localStorage[key] == '[]' ) {
 			return true;
 		}
 
 		var updated = getSaveDate();
-		updated = moment(updated);
+		updated = moment( updated );
 
-		if (comparison.indexOf(' ') < 0) {
-			comparison+= ' hours';
+		if ( comparison.indexOf( ' ' ) < 0 ) {
+			comparison += ' hours';
 		}
-		comparison = comparison.split(' ');
-		var compare = moment().subtract(comparison[0], comparison[1]);
+		comparison = comparison.split( ' ' );
+		var compare = moment().subtract( comparison[0], comparison[1] );
 
-		return (updated.isBefore(compare)) ? true : false
+		return (updated.isBefore( compare )) ? true : false
 	}
 
 	return {
 		get: function (key, def) {
 			def = def || undefined;
 			var data = localStorage[key];
-			if ( ! data) {
+			if ( ! data ) {
 				return def;
 			}
-			data = JSON.parse(data);
+			data = JSON.parse( data );
 			return data;
 		},
 		save: function (key, data) {
-			localStorage[key] = JSON.stringify(data);
+			localStorage[key] = JSON.stringify( data );
 			setSaveDate( key );
 		},
-		reset: function(key) {
+		reset: function (key) {
 			localStorage[key] = '';
 		},
 		getUpdated: function (key) {
 			return getSaveDate( key );
 		},
 		isStale: function (key, comparison) {
-			return isDataStale(key, comparison);
+			return isDataStale( key, comparison );
 		}
 	}
 })();
@@ -340,17 +353,18 @@ function doLog(string) {
 
 
 (function ($) {
-	$( document ).on( 'click', 'a.add_calendar_event', function () {
+	$( document ).on( 'click', 'a.add_calendar_event', function (e) {
+		e.stopPropagation();
 		addEvent( $( this ) );
 	} );
 
-	$(document ).on('click', 'a.refresh_calendar', function() {
-		updateCalendar(true);
-	});
+	$( document ).on( 'click', 'a.refresh_calendar', function () {
+		updateCalendar( true );
+	} );
 
-	$(document ).on('click', 'div[data-event-id]', function() {
-		$(this ).find('.details' ).slideToggle();
-	});
+	$( document ).on( 'click', 'div[data-event-id]', function () {
+		$( this ).find( '.details' ).slideToggle();
+	} );
 
 	updateCalendar();
 
