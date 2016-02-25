@@ -63,6 +63,13 @@ var DATE_FORMAT_FULL = 'MM/DD/YY hh:mm';
 var DATE_FORMAT_NO_TIME = 'MM/DD/YY';
 var DATE_FORMAT_TIME_ONLY = 'hh:mm';
 
+
+/**
+ * Function to load events from the Google Calendar feeds.
+ * Based on the info in these docs: https://developers.google.com/google-apps/calendar/v3/reference/events/list
+ *
+ * @param force - passed in by "refresh" buttons, forces a load from AJAX
+ */
 function updateCalendar(force) {
 
 	// The
@@ -101,7 +108,10 @@ function updateCalendar(force) {
 		// This ensures future-dated items only
 		timeMin: new Date().toISOString(),
 		// This is how many to view in the app TOTAL
-		maxResults: 15
+		maxResults: 15,
+		orderBy: 'startTime',
+		// This "blows out" recurring events into all of the actual events **REQUIRED** for orderBy above to work!
+		singleEvents: true
 	};
 
 	var calendarCallback = function(elem, key) {
@@ -330,15 +340,15 @@ function doLog(string) {
 
 
 (function ($) {
-	$( document ).on( 'click touchstart', 'a.add_calendar_event', function () {
+	$( document ).on( 'click', 'a.add_calendar_event', function () {
 		addEvent( $( this ) );
 	} );
 
-	$(document ).on('click touchstart', 'a.refresh_calendar', function() {
+	$(document ).on('click', 'a.refresh_calendar', function() {
 		updateCalendar(true);
 	});
 
-	$(document ).on('click touchstart', 'div[data-event-id]', function() {
+	$(document ).on('click', 'div[data-event-id]', function() {
 		$(this ).find('.details' ).slideToggle();
 	});
 

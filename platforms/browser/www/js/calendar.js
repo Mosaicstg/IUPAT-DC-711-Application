@@ -101,7 +101,10 @@ function updateCalendar(force) {
 		// This ensures future-dated items only
 		timeMin: new Date().toISOString(),
 		// This is how many to view in the app TOTAL
-		maxResults: 15
+		maxResults: 15,
+		orderBy: 'startTime',
+		// This "blows out" recurring events into all of the actual events **REQUIRED** for orderBy above to work!
+		singleEvents: true
 	};
 
 	var calendarCallback = function(elem, key) {
@@ -143,7 +146,7 @@ function outputCalendarEvents(data, elem, key) {
 	elem.find('[data-event-id]' ).remove();
 	// Loop over the refreshed / new items to display
 	$.each( data, function (k, n) {
-		console.log(k, n);
+		//console.log(k, n);
 		var start = n.start;
 		var end = n.end;
 		var dateDisplay = formatDates(start, end);
@@ -235,7 +238,7 @@ function addEvent(elem) {
 	var endDate = getDateFromEvent( event.end );
 	endDate = new Date( endDate );
 
-	console.log( "Adding", event.displayName, '', event.summary, startDate, endDate );
+	//console.log( "Adding", event.displayName, '', event.summary, startDate, endDate );
 
 	window.plugins.calendar.createEvent( event.displayName, '', event.summary, startDate, endDate, addEventSuccess, addEventError );
 }
