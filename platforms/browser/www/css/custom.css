@@ -155,3 +155,12 @@ a {
 div[data-event-id] .details {
 	display: none;
 }
+
+.newslist img {
+	width: 100% !important;
+	height: auto !important;
+}
+
+.newslist iframe {
+	width: 100% !important;
+}

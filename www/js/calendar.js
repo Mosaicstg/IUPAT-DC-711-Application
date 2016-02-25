@@ -143,7 +143,7 @@ function outputCalendarEvents(data, elem, key) {
 	elem.find('[data-event-id]' ).remove();
 	// Loop over the refreshed / new items to display
 	$.each( data, function (k, n) {
-		console.log(k, n);
+		//console.log(k, n);
 		var start = n.start;
 		var end = n.end;
 		var dateDisplay = formatDates(start, end);
@@ -235,7 +235,7 @@ function addEvent(elem) {
 	var endDate = getDateFromEvent( event.end );
 	endDate = new Date( endDate );
 
-	console.log( "Adding", event.displayName, '', event.summary, startDate, endDate );
+	//console.log( "Adding", event.displayName, '', event.summary, startDate, endDate );
 
 	window.plugins.calendar.createEvent( event.displayName, '', event.summary, startDate, endDate, addEventSuccess, addEventError );
 }
