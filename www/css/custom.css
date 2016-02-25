@@ -166,11 +166,12 @@ div[data-event-id] .details {
 }
 
 .details .summary {
-	margin: 15px 0;
+	display: block;
+	margin: 10px 0 0;
 }
 
 .details .button {
-	margin: 15px auto 10px;
+	margin: 0 auto 10px;
 }
 
 .event {
