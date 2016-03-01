@@ -37,7 +37,7 @@
   <gap:plugin name="org.apache.cordova.splashscreen"/>
   <gap:plugin name="org.apache.cordova.vibration"/>
   <gap:plugin name="nl.x-services.plugins.calendar" />
-  <gap:plugin name="com.adobe.plugins.pushplugin" />
+  <gap:plugin name="com.phonegap.plugins.pushplugin" source="pgb" />
   <icon src="icon.png"/>
   <icon src="www/res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
   <icon src="www/res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:qualifier="mdpi"/>
