@@ -78,4 +78,7 @@
     <allow-intent href="itms:*"/>
     <allow-intent href="itms-apps:*"/>
   </platform>
+  <feature name="PushPlugin">
+    <param name="ios-package" value="PushPlugin" />
+  </feature>
 </widget>
