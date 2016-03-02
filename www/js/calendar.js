@@ -74,7 +74,7 @@ function updateCalendar(force) {
 
 	// The
 	var calendarUrl = 'https://www.googleapis.com/calendar/v3/calendars/';
-	var apiKey = 'AIzaSyBkHBzqdml1_-nwXw0Axq-c1XM9ukmJCD8';
+	var apiKey = 'AIzaSyCVk3h2CnawFh-1acXNWjQo3Sl8w_xKnn4';
 	/**
 	 * List of all calendars that should be loaded.
 	 * Structure as follows:
