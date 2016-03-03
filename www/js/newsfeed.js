@@ -1,3 +1,5 @@
+var errorTimeout;
+
 function updateNews(force) {
 	var newsKey = 'news:category7';
 	if ( force || storage.isStale( newsKey, '2 hours' ) ) {
@@ -5,10 +7,12 @@ function updateNews(force) {
 			type: "GET",
 			url: "http://dc711.net/api/get_category_posts/?category_id=7",
 			dataType: 'jsonp',
-			error: function () {
-				alert( 'Unable to load feed, Incorrect path or invalid feed' );
+			timeout: 5000,
+			error: function (x, t, m) {
+				connectError( x, t, m );
 			},
 			success: function (data) {
+				clearTimeout( errorTimeout );
 				storage.save( newsKey, data );
 				outputNews( data );
 			}
@@ -19,10 +23,23 @@ function updateNews(force) {
 	}
 }
 
+function connectError(x, t, m) {
+	if ( t == 'timeout' ) {
+		$( '#newslist' ).find('div.error').remove();
+		$('#newslist').prepend( '<div class="error noconnection">Could not connect to get the news.  Are you connected to the internet?</div>' );
+	}
+
+}
+
+function outputNewsError(err, eClass) {
+	$( '#newslist' ).html( '' ).append( '<div class="error ' + eClass + '">' + err + '</div>' );
+}
+
 function outputNews(data) {
 	var set = $( '<div data-role="collapsible-set">' );
 	if ( ! data || ! data.hasOwnProperty( 'posts' ) ) {
-		set.append( '<div class="nonews">No news events at this time.  Please check back soon.</div>' );
+		outputNewsError( 'No news events at this time.  Please check back soon.', 'nonews' );
+		return;
 	}
 
 	$( '#newslist' ).html( '' ).append( set );

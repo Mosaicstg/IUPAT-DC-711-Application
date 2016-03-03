@@ -53,7 +53,7 @@ Calendar.install = function () {
 
 cordova.addConstructor( Calendar.install );
 
-var DEBUG_MODE = '#page';
+//var DEBUG_MODE = '#page';
 
 var localCalendarData = {};
 
@@ -131,11 +131,12 @@ function updateCalendar(force) {
 				type: "GET",
 				data: getData,
 				url: url,
-				error: function (jqXHR, textStatus, errorThrown) {
-					doLog( jqXHR );
-					doLog( textStatus );
-					doLog( errorThrown );
-				},
+				error: outputNewsError(elem, 'Unable to connect to load events.  Are you connected to the internet?', 'noconnection'),
+						//function (jqXHR, textStatus, errorThrown) {
+					//doLog( jqXHR );
+					//doLog( textStatus );
+					//doLog( errorThrown );
+				//},
 				success: calendarCallback( elem, key )
 			} );
 		} else {
@@ -145,6 +146,9 @@ function updateCalendar(force) {
 	}
 }
 
+function outputNewsError(elem, err, eClass) {
+	$( elem ).html( '' ).append( '<div class="error ' + eClass + '">' + err + '</div>' );
+}
 
 function outputCalendarEvents(data, elem, key) {
 	data = data.items || data;
@@ -173,7 +177,7 @@ function outputCalendarEvents(data, elem, key) {
 	} );
 
 	if ( ! count ) {
-		elem.html( '' ).append( '<div class="no-events">There are no upcoming events at this time. Please check back soon.</div>' );
+		outputNewsError( elem, 'There are no upcoming events at this time. Please check back soon.', 'noevents' );
 	}
 }
 
