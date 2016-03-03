@@ -152,24 +152,29 @@ function outputCalendarEvents(data, elem, key) {
 	// Remove all existing items from the DOM
 	elem.find( '[data-event-id]' ).remove();
 	// Loop over the refreshed / new items to display
+	var count = 0;
 	$.each( data, function (k, n) {
 		//console.log(k, n);
 		var start = n.start;
 		var end = n.end;
 		var dateDisplay = formatDates( start, end );
-		start = moment( getDate( start ), DATE_FORMAT_GOOGLE );
-		end = moment( getDate( end ), DATE_FORMAT_GOOGLE );
+		//start = moment( getDate( start ), DATE_FORMAT_GOOGLE );
+		//end = moment( getDate( end ), DATE_FORMAT_GOOGLE );
 		var html = '<div class="event" data-event-id="' + k + '" data-event-key="' + key + '">' +
 			'<span class="date">' + dateDisplay + '</span>' + ' ' +
 			'<span class="display-name">' + (n.displayName || n.summary) + '</span>' +
 			'<p data-theme="a" data-form="ui-body-a" class="ui-body ui-body-a ui-corner-all details">' +
-			// '<span class="start-date">' + start.format( DATE_FORMAT_TIME_ONLY ) + '</span>' + '<br />'+
-			// '<span class="end-date">' + end.format( DATE_FORMAT_TIME_ONLY ) + '</span>' + '<br />' +
+				// '<span class="start-date">' + start.format( DATE_FORMAT_TIME_ONLY ) + '</span>' + '<br />'+
+				// '<span class="end-date">' + end.format( DATE_FORMAT_TIME_ONLY ) + '</span>' + '<br />' +
 			'<span class="summary">' + n.summary + '</span>' + '<br />' +
 			'<a href="javascript:void(0);" class="add_calendar_event button">+ Add Event</a></div>';
-		'</p>' +
 		elem.append( html );
+		count ++;
 	} );
+
+	if ( ! count ) {
+		elem.html( '' ).append( '<div class="no-events">There are no upcoming events at this time. Please check back soon.</div>' );
+	}
 }
 
 function getDate(d) {
@@ -276,81 +281,6 @@ function localAlert(message, callBack, title, buttons) {
 function phoneGapAlert() {
 }
 
-var storage = (function () {
-
-	function updatedKey(key) {
-		return 'update:' + key;
-	}
-
-	function setSaveDate(key) {
-		localStorage[updatedKey( key )] = new Date();
-	}
-
-	function getSaveDate(key) {
-		return localStorage[updatedKey( key )];
-	}
-
-	function isDataStale(key, comparison) {
-		if ( ! localStorage[key] || ! getSaveDate( key ) ) {
-			return true;
-		}
-
-		if ( localStorage[key] == '[]' ) {
-			return true;
-		}
-
-		var updated = getSaveDate();
-		updated = moment( updated );
-
-		if ( comparison.indexOf( ' ' ) < 0 ) {
-			comparison += ' hours';
-		}
-		comparison = comparison.split( ' ' );
-		var compare = moment().subtract( comparison[0], comparison[1] );
-
-		return (updated.isBefore( compare )) ? true : false
-	}
-
-	return {
-		get: function (key, def) {
-			def = def || undefined;
-			var data = localStorage[key];
-			if ( ! data ) {
-				return def;
-			}
-			data = JSON.parse( data );
-			return data;
-		},
-		save: function (key, data) {
-			localStorage[key] = JSON.stringify( data );
-			setSaveDate( key );
-		},
-		reset: function (key) {
-			localStorage[key] = '';
-		},
-		getUpdated: function (key) {
-			return getSaveDate( key );
-		},
-		isStale: function (key, comparison) {
-			return isDataStale( key, comparison );
-		}
-	}
-})();
-
-function doLog(string) {
-	if ( typeof string == 'object' ) {
-		string = JSON.stringify( string, null, '   ' );
-	}
-
-	if ( DEBUG_MODE ) {
-		if ( DEBUG_MODE !== true ) {
-			$( DEBUG_MODE ).append( '<pre>' + string + '</pre>' );
-		} else {
-			console.log( string );
-		}
-	}
-}
-
 
 (function ($) {
 	$( document ).on( 'click', 'a.add_calendar_event', function (e) {
@@ -369,5 +299,4 @@ function doLog(string) {
 	updateCalendar();
 
 })( jQuery );
-
 

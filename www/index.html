@@ -12,15 +12,14 @@
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){
-	if (navigator.userAgent.match(/(iPad.*|iPhone.*|iPod.*);.*CPU.*OS (7|8|9)_\d/i)) {
-		$("body").addClass("ios7");
-		$("body").append('');
-	}
+jQuery(function($) {
+  if (navigator.userAgent.match(/(iPad.*|iPhone.*|iPod.*);.*CPU.*OS (7|8|9)_\d/i)) {
+    $("body").addClass("ios7");
+    $("body").append('');
+  }
 });
 </script>
 </head>
-
 <body>
 <div data-role="page" id="page" data-theme="a">
   <div data-role="header" data-theme="a" class="main-screen-header"><img class="banner" src="img/banner.jpg" alt="" width="100%" /></div>
@@ -47,6 +46,7 @@ $(document).ready(function(){
 <div data-role="page" id="news" data-theme="a">
   <div data-role="header" class="internal-header" data-add-back-btn="true" data-theme="a" data-position="fixed">
     <h1>News &amp; Alerts</h1>
+    <a href="javascript:void(0);" class="refresh_news ui-btn-right">Refresh</a>
   </div>
   <div data-role="content">
     <div id="newslist" class="newslist"></div>
@@ -501,11 +501,12 @@ $(document).ready(function(){
   </div>
 </div>
 <script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/storage.js"></script>
+<script type="text/javascript" src="js/moment.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="js/newsfeed.js"></script>
 <script type="text/javascript" src="js/meetingsfeed.js"></script>
 <script type="text/javascript" src="js/oauth.js"></script>
-<script type="text/javascript" src="js/moment.js"></script>
 <script type="text/javascript" src="js/calendar.js"></script>
 <script type="text/javascript" src="js/dispatchfeed.js"></script>
 <script type="text/javascript" src="js/contactformfeed.js"></script>
