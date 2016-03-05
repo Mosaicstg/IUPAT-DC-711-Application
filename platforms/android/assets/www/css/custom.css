@@ -164,3 +164,46 @@ div[data-event-id] .details {
 .newslist iframe {
 	width: 100% !important;
 }
+
+.details .summary {
+	display: block;
+	margin: 10px 0 0;
+}
+
+.details .button {
+	margin: 0 auto 10px;
+}
+
+.event {
+	margin: 10px 0;
+}
+
+.gform_body input {
+	width: 99%;
+}
+
+.gform_body textarea {
+	width: 99%;
+}
+
+.gform_body li {
+	list-style: none;
+	margin-left: -40px;
+}
+
+.gform_body label {
+	font-size: 0.8em;
+	margin-top: 5px;
+	color: #f2c642;
+}
+
+.gform_body .gfield_label {
+	font-size: 1em;
+	margin-top: 15px;
+	font-weight: bold;
+	color: #fff;
+}
+
+.gform_body .gform_button {
+	border: 0 !important;
+}

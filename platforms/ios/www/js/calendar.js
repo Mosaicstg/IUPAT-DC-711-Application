@@ -55,9 +55,6 @@ cordova.addConstructor( Calendar.install );
 
 var DEBUG_MODE = '#page';
 
-var localCalendarData = {};
-
-
 var DATE_FORMAT_GOOGLE = 'YYYY-MM-DD';
 var DATE_FORMAT_FULL = 'MM/DD/YY hh:mm';
 var DATE_FORMAT_NO_TIME = 'MM/DD/YY';
@@ -74,7 +71,7 @@ function updateCalendar(force) {
 
 	// The
 	var calendarUrl = 'https://www.googleapis.com/calendar/v3/calendars/';
-	var apiKey = 'AIzaSyBkHBzqdml1_-nwXw0Axq-c1XM9ukmJCD8';
+	var apiKey = 'AIzaSyCVk3h2CnawFh-1acXNWjQo3Sl8w_xKnn4';
 	/**
 	 * List of all calendars that should be loaded.
 	 * Structure as follows:
@@ -131,11 +128,12 @@ function updateCalendar(force) {
 				type: "GET",
 				data: getData,
 				url: url,
-				error: function (jqXHR, textStatus, errorThrown) {
-					doLog( jqXHR );
-					doLog( textStatus );
-					doLog( errorThrown );
-				},
+				error: outputNewsError(elem, 'Unable to connect to load events.  Are you connected to the internet?', 'noconnection'),
+						//function (jqXHR, textStatus, errorThrown) {
+					//doLog( jqXHR );
+					//doLog( textStatus );
+					//doLog( errorThrown );
+				//},
 				success: calendarCallback( elem, key )
 			} );
 		} else {
@@ -145,6 +143,9 @@ function updateCalendar(force) {
 	}
 }
 
+function outputNewsError(elem, err, eClass) {
+	$( elem ).html( '' ).append( '<div class="error ' + eClass + '">' + err + '</div>' );
+}
 
 function outputCalendarEvents(data, elem, key) {
 	data = data.items || data;
@@ -152,24 +153,29 @@ function outputCalendarEvents(data, elem, key) {
 	// Remove all existing items from the DOM
 	elem.find( '[data-event-id]' ).remove();
 	// Loop over the refreshed / new items to display
+	var count = 0;
 	$.each( data, function (k, n) {
 		//console.log(k, n);
 		var start = n.start;
 		var end = n.end;
 		var dateDisplay = formatDates( start, end );
-		start = moment( getDate( start ), DATE_FORMAT_GOOGLE );
-		end = moment( getDate( end ), DATE_FORMAT_GOOGLE );
-		var html = '<div data-event-id="' + k + '" data-event-key="' + key + '">' +
-			'<span class="date">' + dateDisplay + '</span>' +
+		//start = moment( getDate( start ), DATE_FORMAT_GOOGLE );
+		//end = moment( getDate( end ), DATE_FORMAT_GOOGLE );
+		var html = '<div class="event" data-event-id="' + k + '" data-event-key="' + key + '">' +
+			'<span class="date">' + dateDisplay + '</span>' + ' ' +
 			'<span class="display-name">' + (n.displayName || n.summary) + '</span>' +
-			'<p class="details">' +
-			'<span class="start-date">' + start.format( DATE_FORMAT_FULL ) + '</span>' +
-			'<span class="end-date">' + end.format( DATE_FORMAT_FULL ) + '</span>' +
-			'<span class="summary">' + n.summary + '</span>' +
-			'<a href="javascript:void(0);" class="add_calendar_event">+ Add Event</a></div>';
-		'</p>' +
+			'<p data-theme="a" data-form="ui-body-a" class="ui-body ui-body-a ui-corner-all details">' +
+				// '<span class="start-date">' + start.format( DATE_FORMAT_TIME_ONLY ) + '</span>' + '<br />'+
+				// '<span class="end-date">' + end.format( DATE_FORMAT_TIME_ONLY ) + '</span>' + '<br />' +
+			'<span class="summary">' + n.summary + '</span>' + '<br />' +
+			'<a href="javascript:void(0);" class="add_calendar_event button">+ Add Event</a></div>';
 		elem.append( html );
+		count ++;
 	} );
+
+	if ( ! count ) {
+		outputNewsError( elem, 'There are no upcoming events at this time. Please check back soon.', 'noevents' );
+	}
 }
 
 function getDate(d) {
@@ -276,81 +282,6 @@ function localAlert(message, callBack, title, buttons) {
 function phoneGapAlert() {
 }
 
-var storage = (function () {
-
-	function updatedKey(key) {
-		return 'update:' + key;
-	}
-
-	function setSaveDate(key) {
-		localStorage[updatedKey( key )] = new Date();
-	}
-
-	function getSaveDate(key) {
-		return localStorage[updatedKey( key )];
-	}
-
-	function isDataStale(key, comparison) {
-		if ( ! localStorage[key] || ! getSaveDate( key ) ) {
-			return true;
-		}
-
-		if ( localStorage[key] == '[]' ) {
-			return true;
-		}
-
-		var updated = getSaveDate();
-		updated = moment( updated );
-
-		if ( comparison.indexOf( ' ' ) < 0 ) {
-			comparison += ' hours';
-		}
-		comparison = comparison.split( ' ' );
-		var compare = moment().subtract( comparison[0], comparison[1] );
-
-		return (updated.isBefore( compare )) ? true : false
-	}
-
-	return {
-		get: function (key, def) {
-			def = def || undefined;
-			var data = localStorage[key];
-			if ( ! data ) {
-				return def;
-			}
-			data = JSON.parse( data );
-			return data;
-		},
-		save: function (key, data) {
-			localStorage[key] = JSON.stringify( data );
-			setSaveDate( key );
-		},
-		reset: function (key) {
-			localStorage[key] = '';
-		},
-		getUpdated: function (key) {
-			return getSaveDate( key );
-		},
-		isStale: function (key, comparison) {
-			return isDataStale( key, comparison );
-		}
-	}
-})();
-
-function doLog(string) {
-	if ( typeof string == 'object' ) {
-		string = JSON.stringify( string, null, '   ' );
-	}
-
-	if ( DEBUG_MODE ) {
-		if ( DEBUG_MODE !== true ) {
-			$( DEBUG_MODE ).append( '<pre>' + string + '</pre>' );
-		} else {
-			console.log( string );
-		}
-	}
-}
-
 
 (function ($) {
 	$( document ).on( 'click', 'a.add_calendar_event', function (e) {
@@ -369,5 +300,4 @@ function doLog(string) {
 	updateCalendar();
 
 })( jQuery );
-
 

@@ -15,6 +15,10 @@
                         {
                             "xml": "<feature name=\"Notification\"><param name=\"ios-package\" value=\"CDVNotification\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -29,6 +33,9 @@
             "PACKAGE_NAME": "com.phonegap.helloworld"
         },
         "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "cordova-plugin-device": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
         }
     },
@@ -54,11 +61,20 @@
             "merges": [
                 "navigator.notification"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-device/www/device.js",
+            "id": "cordova-plugin-device.device",
+            "pluginId": "cordova-plugin-device",
+            "clobbers": [
+                "device"
+            ]
         }
     ],
     "plugin_metadata": {
         "cordova-plugin-calendar": "4.4.7",
         "cordova-plugin-whitelist": "1.2.1",
-        "cordova-plugin-dialogs": "1.2.0"
+        "cordova-plugin-dialogs": "1.2.0",
+        "cordova-plugin-device": "1.1.1"
     }
 }

@@ -53,10 +53,7 @@ Calendar.install = function () {
 
 cordova.addConstructor( Calendar.install );
 
-//var DEBUG_MODE = '#page';
-
-var localCalendarData = {};
-
+var DEBUG_MODE = '#page';
 
 var DATE_FORMAT_GOOGLE = 'YYYY-MM-DD';
 var DATE_FORMAT_FULL = 'MM/DD/YY hh:mm';

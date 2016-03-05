@@ -1,57 +1,78 @@
-// Improved "document ready".  
-// Ensures no collision with the $ symbol (other libraries use it), plus tighter, smaller 
-jQuery(function($) {
-    // TODO: Joe, I'd recommend using the "local storage" functions (See the "calendar" file for storage usage examples)
-    $.ajax({
-        type: "GET",
-        url: "http://dc711.net/api/get_category_posts/?category_id=7",
-        dataType: 'jsonp',
-        error: function(){
-            alert( 'Unable to load feed, Incorrect path or invalid feed' );
-        },
-        success: function(data) {
-            // light validation that there is data, and there are posts in the data
-            if ( ! data || ! data.hasOwnProperty('posts') ) {
-                alert("No posts or data!");
-                return;
-            }
-            
-            // Get the "set" div into a jQuery variable for convenience, readability
-            var set = $('<div data-role="collapsible-set">');
-            // Append the "set" div to the relevant newslist div
-            $('#newslist').append(set);
-            var html = '';
-            // Get the actual number of posts returned
-            var num = data.posts.length;
-            // Ensure that even if there's more than 10, we only show 10
-            num = Math.min(num, 10);
-            // Loop over the number (either actual number, or 10, whichever is smaller)
-            for ( var i = 0; i < num; i++ ) {
-                // First, check if that post exists....
-                if ( typeof data.posts[i] === 'undefined' ) {
-                    continue;
-                }
-                // assign to a local variable for more convenient access
-                var post = data.posts[i];
-                html += '<div data-role="collapsible">';
-                // defensive programming - ensure title exists before accessing
-                if ( post.hasOwnProperty('title') ) {
-                    html += '<h4 class="entry-title">' + post.title + '</h4>';
-                }
-                // defensive programming - ensure content exists before accessing
-                if ( post.hasOwnProperty('content') ) {
-                    html += '<div class="entry-content">' + post.content + '</div>';
-                }
-                html += '</div>';
-            }
-						
-            // Append the html to the set directly
-            set.append(html);
-						
-            // Ensure that "collapsibleset" function exists before calling it
-                // Because we already have "set" in a jQuery variable, just call collapsibleset directly on it
-                set.collapsibleset();
+var errorTimeout;
 
-        }
-    });
-});
+function updateNews(force) {
+	var newsKey = 'news:category7';
+	if ( force || storage.isStale( newsKey, '2 hours' ) ) {
+		$.ajax( {
+			type: "GET",
+			url: "http://dc711.net/api/get_category_posts/?category_id=7",
+			dataType: 'jsonp',
+			timeout: 5000,
+			error: function (x, t, m) {
+				connectError( x, t, m );
+			},
+			success: function (data) {
+				clearTimeout( errorTimeout );
+				storage.save( newsKey, data );
+				outputNews( data );
+			}
+		} );
+	} else {
+		var data = storage.get( newsKey );
+		outputNews( data );
+	}
+}
+
+function connectError(x, t, m) {
+	if ( t == 'timeout' ) {
+		$( '#newslist' ).find('div.error').remove();
+		$('#newslist').prepend( '<div class="error noconnection">Could not connect to get the news.  Are you connected to the internet?</div>' );
+	}
+
+}
+
+function outputNewsError(err, eClass) {
+	$( '#newslist' ).html( '' ).append( '<div class="error ' + eClass + '">' + err + '</div>' );
+}
+
+function outputNews(data) {
+	var set = $( '<div data-role="collapsible-set">' );
+	if ( ! data || ! data.hasOwnProperty( 'posts' ) ) {
+		outputNewsError( 'No news events at this time.  Please check back soon.', 'nonews' );
+		return;
+	}
+
+	$( '#newslist' ).html( '' ).append( set );
+	var html = '';
+	var num = data.posts.length;
+	num = Math.min( num, 10 );
+	for ( var i = 0; i < num; i ++ ) {
+		// First, check if that post exists....
+		if ( typeof data.posts[i] === 'undefined' ) {
+			continue;
+		}
+
+		var post = data.posts[i];
+		html += '<div data-role="collapsible">';
+		if ( post.hasOwnProperty( 'title' ) ) {
+			html += '<h4 class="entry-title">' + post.title + '</h4>';
+		}
+		if ( post.hasOwnProperty( 'content' ) ) {
+			html += '<div class="entry-content">' + post.content + '</div>';
+		}
+		html += '</div>';
+	}
+
+	set.append( html );
+	set.collapsibleset();
+}
+
+(function ($) {
+	$( document ).on( 'click', 'a.refresh_news', function () {
+		updateNews( true );
+	} );
+
+	updateNews();
+})( jQuery );
+
+
