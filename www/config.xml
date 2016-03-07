@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.mosaicstg.iupatdc711" version="1.5.0">
-  <name>IUPAT DC 711 App</name>
-  <description>Application for IUPAT DC 711</description>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.mosaicstg.iupatdc711" version="1.0.0">
+  <name>DC 711</name>
+  <description>IUPAT DC 711 App</description>
   <author href="http://mosaicstg.com" email="services@mosaicstg.com">Mosaic</author>
   <content src="index.html"/>
   <preference name="phonegap-version" value="cli-5.2.0" /> 
@@ -66,6 +66,10 @@
   <gap:splash src="res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone"/>
   <access origin="*"/>
   <plugin name="cordova-plugin-whitelist" source="npm"/>
+  <gap:plugin name="cordova-plugin-statusbar" source="npm" />
+  <preference name="StatusBarOverlaysWebView" value="false" />
+  <preference name="StatusBarBackgroundColor" value="#f2c642" />
+  <preference name="StatusBarStyle" value="default" />
   <allow-intent href="http://*/*"/>
   <allow-intent href="https://*/*"/>
   <allow-intent href="tel:*"/>
