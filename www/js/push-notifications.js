@@ -29,3 +29,34 @@ function prepareToRegister() {
 	// Because this is cross-origin, we don't have any success / error handlers.
 	$.post( pushRegistrationUrl, data );
 }
+
+
+
+// from http://phonegappro.com/tutorials/apache-cordova-phonegap-push-notification-tutorial-part-2/
+
+document.addEventListener("deviceready",onDeviceReady,false);
+function onDeviceReady(){
+console.log("Device Ready")
+var push = PushNotification.init({ "android": {"senderID": "745856988600"},
+"ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
+
+  push.on('registration', function(data) {
+	console.log(data.registrationId);
+    $("#gcm_id").html(data.registrationId);
+  });
+
+  push.on('notification', function(data) {
+    console.log(data.message);
+    alert(data.title+" Message: " +data.message);
+    // data.message,
+    // data.title,
+    // data.count,
+    // data.sound,
+    // data.image,
+    // data.additionalData
+  });
+
+  push.on('error', function(e) {
+    console.log(e.message);
+  });
+}
