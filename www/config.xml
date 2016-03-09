@@ -67,7 +67,9 @@
   <access origin="*"/>
   <plugin name="cordova-plugin-whitelist" source="npm"/>
   <preference name="android-build-tool" value="gradle" />
-  <gap:plugin name="phonegap-plugin-push" source="npm" />
+  <plugin name="phonegap-plugin-push" source="npm">
+    <param name="SENDER_ID" value="745856988600" />
+  </plugin>
   <gap:plugin name="cordova-plugin-statusbar" source="npm" />
   <preference name="StatusBarOverlaysWebView" value="false" />
   <preference name="StatusBarBackgroundColor" value="#f2c642" />

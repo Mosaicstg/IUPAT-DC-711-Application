@@ -23,14 +23,12 @@ function prepareToRegister() {
 	}
 
 	if (push) {
-		console.log(push);
 		push.on( 'registration', function (data) {
-			alert( data );
 			$( "#gcm_id" ).html( data.registrationId );
+			register(data);
 		} );
 
 		push.on( 'notification', function (data) {
-			console.log( data.message );
 			alert( data.title + " Message: " + data.message );
 			// data.message,
 			// data.title,
@@ -56,13 +54,15 @@ function register(pushData) {
 		lang: 'en'
 	};
 
-	// IF we are getting legit "device" info, then use it
+	// IF we are getting legit registration info, then use it
 	if ( pushData && pushData.registrationId ) {
 		data.token = pushData.registrationId;
+	}
+	
+	// If we are getting legit device info, use it
+	if (device && device.platform) {
 		data.os = device.platform;
 	}
-
-	console.log( "real data", data );
 
 	// If the OS is not supported (by the WP plugin), then get out.
 	if ( data.os != 'iOS' && data.os != 'Android' ) {
