@@ -3,27 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <title>IUPAT DC 711 App</title>
-<meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-<link href="css/IUPATDC711.css" rel="stylesheet" type="text/css">
+<link href="css/iupatdc711.css" rel="stylesheet" type="text/css">
 <link href="css/jquery.mobile.icons.min.css" rel="stylesheet" type="text/css">
 <link href="css/custom.css" rel="stylesheet" type="text/css">
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script type="text/javascript">
-jQuery(function($) {
-  if (navigator.userAgent.match(/(iPad.*|iPhone.*|iPod.*);.*CPU.*OS (7|8|9)_\d/i)) {
-    $("body").addClass("ios7");
-    $("body").append('');
-  }
-});
-</script>
 </head>
 <body>
 <div data-role="page" id="page" data-theme="a">
   <div data-role="header" data-theme="a" class="main-screen-header"><img class="banner" src="img/banner.jpg" alt="" width="100%" /></div>
   <div data-role="content" class="main-nav-container">
+  <h1>Push Notification Example</h1>
+Your GCM ID : <br/>
+<p id="gcm_id"></p>
     <div class="ui-grid-a main-nav-grid" data-theme="a">
       <div class="ui-block-a"><a href="#news" data-transition="slide"><img src="img/news-icon.png" width="50%" alt=""/><br />
         News &amp; Alerts</a></div>
@@ -50,9 +44,6 @@ jQuery(function($) {
   </div>
   <div data-role="content">
     <div id="newslist" class="newslist"></div>
-    <center>
-      <h2><a class="button" href="http://dc711.net/category/news/">View All Posts</a></h2>
-    </center>
   </div>
   <div data-role="footer" data-theme="a" data-position="fixed">
     <div class="social-media-links"> <a class="facebook" href="https://www.facebook.com/pages/DC-711/134238366621308" target="_blank"><i class="fa fa-facebook fa-fw"></i></a> <a class="twitter" href="https://twitter.com/IUPATDC711" target="_blank"><i class="fa fa-twitter fa-fw"></i></a> <a class="instagram" href="https://www.instagram.com/iupatdistrictcouncil711/" target="_blank"><i class="fa fa-instagram fa-fw"></i></a> <a class="youtube" href="https://www.youtube.com/channel/UCrdvk0m6OURMcMdrb3BSLfw" target="_blank"><i class="fa fa-youtube-play fa-fw"></i></a> <a class="site-icon" href="http://dc711.net/" target="_blank"><img src="img/site-icon.png" alt="" /></a></div>
@@ -64,9 +55,6 @@ jQuery(function($) {
   </div>
   <div data-role="content">
     <div id="meetingslist" class="newslist"></div>
-    <center>
-      <h2><a class="button" href="http://dc711.net/category/meetings/">View All Posts</a></h2>
-    </center>
   </div>
   <div data-role="footer" data-theme="a" data-position="fixed">
     <div class="social-media-links"> <a class="facebook" href="https://www.facebook.com/pages/DC-711/134238366621308" target="_blank"><i class="fa fa-facebook fa-fw"></i></a> <a class="twitter" href="https://twitter.com/IUPATDC711" target="_blank"><i class="fa fa-twitter fa-fw"></i></a> <a class="instagram" href="https://www.instagram.com/iupatdistrictcouncil711/" target="_blank"><i class="fa fa-instagram fa-fw"></i></a> <a class="youtube" href="https://www.youtube.com/channel/UCrdvk0m6OURMcMdrb3BSLfw" target="_blank"><i class="fa fa-youtube-play fa-fw"></i></a> <a class="site-icon" href="http://dc711.net/" target="_blank"><img src="img/site-icon.png" alt="" /></a></div>
@@ -472,7 +460,7 @@ jQuery(function($) {
     <h1>Glaziers Dispatch List</h1>
   </div>
   <div data-role="content">
-  <div id="glaziers-dispatch-list_feed"></div>
+  <div id="glaziers-dispatch-list_feed" class="dispatch-feed"></div>
   </div>
   <div data-role="footer" data-theme="a" data-position="fixed">
     <div class="social-media-links"> <a class="facebook" href="https://www.facebook.com/pages/DC-711/134238366621308" target="_blank"><i class="fa fa-facebook fa-fw"></i></a> <a class="twitter" href="https://twitter.com/IUPATDC711" target="_blank"><i class="fa fa-twitter fa-fw"></i></a> <a class="instagram" href="https://www.instagram.com/iupatdistrictcouncil711/" target="_blank"><i class="fa fa-instagram fa-fw"></i></a> <a class="youtube" href="https://www.youtube.com/channel/UCrdvk0m6OURMcMdrb3BSLfw" target="_blank"><i class="fa fa-youtube-play fa-fw"></i></a> <a class="site-icon" href="http://dc711.net/" target="_blank"><img src="img/site-icon.png" alt="" /></a></div>
@@ -483,7 +471,7 @@ jQuery(function($) {
     <h1>Commercial Painters Dispatch List</h1>
   </div>
   <div data-role="content">
-  <div id="commercial-painters-dispatch-list_feed"></div>
+  <div id="commercial-painters-dispatch-list_feed" class="dispatch-feed"></div>
   </div>
   <div data-role="footer" data-theme="a" data-position="fixed">
     <div class="social-media-links"> <a class="facebook" href="https://www.facebook.com/pages/DC-711/134238366621308" target="_blank"><i class="fa fa-facebook fa-fw"></i></a> <a class="twitter" href="https://twitter.com/IUPATDC711" target="_blank"><i class="fa fa-twitter fa-fw"></i></a> <a class="instagram" href="https://www.instagram.com/iupatdistrictcouncil711/" target="_blank"><i class="fa fa-instagram fa-fw"></i></a> <a class="youtube" href="https://www.youtube.com/channel/UCrdvk0m6OURMcMdrb3BSLfw" target="_blank"><i class="fa fa-youtube-play fa-fw"></i></a> <a class="site-icon" href="http://dc711.net/" target="_blank"><img src="img/site-icon.png" alt="" /></a></div>
@@ -494,7 +482,7 @@ jQuery(function($) {
     <h1>Industrial Painters Dispatch List</h1>
   </div>
   <div data-role="content">
-  <div id="industrial-painters-dispatch-list_feed"></div>
+  <div id="industrial-painters-dispatch-list_feed" class="dispatch-feed"></div>
   </div>
   <div data-role="footer" data-theme="a" data-position="fixed">
     <div class="social-media-links"> <a class="facebook" href="https://www.facebook.com/pages/DC-711/134238366621308" target="_blank"><i class="fa fa-facebook fa-fw"></i></a> <a class="twitter" href="https://twitter.com/IUPATDC711" target="_blank"><i class="fa fa-twitter fa-fw"></i></a> <a class="instagram" href="https://www.instagram.com/iupatdistrictcouncil711/" target="_blank"><i class="fa fa-instagram fa-fw"></i></a> <a class="youtube" href="https://www.youtube.com/channel/UCrdvk0m6OURMcMdrb3BSLfw" target="_blank"><i class="fa fa-youtube-play fa-fw"></i></a> <a class="site-icon" href="http://dc711.net/" target="_blank"><img src="img/site-icon.png" alt="" /></a></div>
@@ -507,7 +495,7 @@ jQuery(function($) {
 <script type="text/javascript" src="js/newsfeed.js"></script>
 <script type="text/javascript" src="js/meetingsfeed.js"></script>
 <script type="text/javascript" src="js/oauth.js"></script>
-<script type="text/javascript" src="js/calendar.js"></script>
+<script type="text/javascript" src="js/calendar_feed.js"></script>
 <script type="text/javascript" src="js/dispatchfeed.js"></script>
 <script type="text/javascript" src="js/contactformfeed.js"></script>
 <script type="text/javascript" src="js/push-notifications.js"></script>

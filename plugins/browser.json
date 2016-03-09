@@ -18,6 +18,10 @@
         },
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "phonegap-plugin-push": {
+            "SENDER_ID": "745856988600",
+            "PACKAGE_NAME": "com.mosaicstg.iupatdc711"
         }
     },
     "dependent_plugins": {}

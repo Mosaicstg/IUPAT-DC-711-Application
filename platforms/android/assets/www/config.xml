@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.mosaicstg.iupatdc711" version="1.5.0">
-  <name>IUPAT DC 711 App</name>
-  <description>Application for IUPAT DC 711</description>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.mosaicstg.iupatdc711" version="1.0.0">
+  <name>DC 711</name>
+  <description>IUPAT DC 711 App</description>
   <author href="http://mosaicstg.com" email="services@mosaicstg.com">Mosaic</author>
   <content src="index.html"/>
+  <preference name="phonegap-version" value="cli-5.2.0" /> 
   <preference name="permissions" value="none"/>
   <preference name="orientation" value="portrait"/>
   <preference name="target-device" value="universal"/>
@@ -19,24 +20,24 @@
   <preference name="disable-cursor" value="false"/>
   <preference name="android-minSdkVersion" value="14"/>
   <preference name="android-installLocation" value="auto"/>
-  <gap:plugin name="org.apache.cordova.battery-status"/>
-  <gap:plugin name="org.apache.cordova.camera"/>
-  <gap:plugin name="org.apache.cordova.media-capture"/>
-  <gap:plugin name="org.apache.cordova.console"/>
-  <gap:plugin name="org.apache.cordova.contacts"/>
-  <gap:plugin name="org.apache.cordova.device"/>
-  <gap:plugin name="org.apache.cordova.device-motion"/>
-  <gap:plugin name="org.apache.cordova.device-orientation"/>
-  <gap:plugin name="org.apache.cordova.dialogs"/>
-  <gap:plugin name="org.apache.cordova.file"/>
-  <gap:plugin name="org.apache.cordova.file-transfer"/>
-  <gap:plugin name="org.apache.cordova.geolocation"/>
-  <gap:plugin name="org.apache.cordova.globalization"/>
-  <gap:plugin name="org.apache.cordova.inappbrowser"/>
-  <gap:plugin name="org.apache.cordova.media"/>
-  <gap:plugin name="org.apache.cordova.network-information"/>
-  <gap:plugin name="org.apache.cordova.splashscreen"/>
-  <gap:plugin name="org.apache.cordova.vibration"/>
+  <gap:plugin name="org.apache.cordova.battery-status" source="npm" />
+  <gap:plugin name="org.apache.cordova.camera" source="npm" />
+  <gap:plugin name="org.apache.cordova.media-capture" source="npm" />
+  <gap:plugin name="org.apache.cordova.console" source="npm" />
+  <gap:plugin name="org.apache.cordova.contacts" source="npm"/>
+  <gap:plugin name="org.apache.cordova.device" source="npm"/>
+  <gap:plugin name="org.apache.cordova.device-motion" source="npm"/>
+  <gap:plugin name="org.apache.cordova.device-orientation" source="npm"/>
+  <gap:plugin name="org.apache.cordova.dialogs" source="npm"/>
+  <gap:plugin name="org.apache.cordova.file" source="npm" />
+  <gap:plugin name="org.apache.cordova.file-transfer" source="npm"/>
+  <gap:plugin name="org.apache.cordova.geolocation" source="npm"/>
+  <gap:plugin name="org.apache.cordova.globalization" source="npm"/>
+  <gap:plugin name="org.apache.cordova.inappbrowser" source="npm"/>
+  <gap:plugin name="org.apache.cordova.media" source="npm" />
+  <gap:plugin name="org.apache.cordova.network-information" source="npm" />
+  <gap:plugin name="org.apache.cordova.splashscreen" source="npm"/>
+  <gap:plugin name="org.apache.cordova.vibration" source="npm" /> 
   <gap:plugin name="nl.x-services.plugins.calendar" />
   <icon src="icon.png"/>
   <icon src="res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
@@ -64,9 +65,13 @@
   <gap:splash src="res/screen/ios/screen-ipad-landscape.png" gap:platform="ios" width="1024" height="768"/>
   <gap:splash src="res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone"/>
   <access origin="*"/>
-  <plugin name="cordova-plugin-whitelist" version="1"/>
+  <plugin name="cordova-plugin-whitelist" source="npm"/>
   <preference name="android-build-tool" value="gradle" />
-  <plugin name="phonegap-plugin-push" source="npm" />
+  <gap:plugin name="phonegap-plugin-push" source="npm" />
+  <gap:plugin name="cordova-plugin-statusbar" source="npm" />
+  <preference name="StatusBarOverlaysWebView" value="false" />
+  <preference name="StatusBarBackgroundColor" value="#f2c642" />
+  <preference name="StatusBarStyle" value="default" />
   <allow-intent href="http://*/*"/>
   <allow-intent href="https://*/*"/>
   <allow-intent href="tel:*"/>
@@ -80,4 +85,5 @@
     <allow-intent href="itms:*"/>
     <allow-intent href="itms-apps:*"/>
   </platform>
+  <platform name="winphone"></platform>
 </widget>

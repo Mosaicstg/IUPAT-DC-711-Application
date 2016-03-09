@@ -29,6 +29,10 @@
         },
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "phonegap-plugin-push": {
+            "SENDER_ID": "745856988600",
+            "PACKAGE_NAME": "com.mosaicstg.iupatdc711"
         }
     },
     "dependent_plugins": {},
@@ -75,12 +79,21 @@
             "id": "cordova-plugin-device.DeviceProxy",
             "pluginId": "cordova-plugin-device",
             "runs": true
+        },
+        {
+            "file": "plugins/phonegap-plugin-push/www/push.js",
+            "id": "phonegap-plugin-push.PushNotification",
+            "pluginId": "phonegap-plugin-push",
+            "clobbers": [
+                "PushNotification"
+            ]
         }
     ],
     "plugin_metadata": {
         "cordova-plugin-whitelist": "1.2.1",
         "cordova-plugin-calendar": "4.4.7",
         "cordova-plugin-dialogs": "1.2.0",
-        "cordova-plugin-device": "1.1.1"
+        "cordova-plugin-device": "1.1.1",
+        "phonegap-plugin-push": "1.6.0"
     }
 }

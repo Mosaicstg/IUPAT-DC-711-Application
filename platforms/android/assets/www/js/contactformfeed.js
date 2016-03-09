@@ -1,5 +1,4 @@
 jQuery(function($) {
-	
 	$.ajax({
 		type: "GET",
 		url: 'http://dc711.net/api/get_page/?slug=contact-us',
