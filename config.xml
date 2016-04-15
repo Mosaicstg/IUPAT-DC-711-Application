@@ -17,7 +17,7 @@
   <preference name="show-splash-screen-spinner" value="true"/>
   <preference name="auto-hide-splash-screen" value="true"/>
   <preference name="disable-cursor" value="false"/>
-  <preference name="android-minSdkVersion" value="253"/>
+  <preference name="android-minSdkVersion" value="14"/>
   <preference name="android-installLocation" value="auto"/>
   <!-- Plugins -->
   <gap:plugin name="cordova-plugin-battery-status" source="npm" />
@@ -40,7 +40,6 @@
   <gap:plugin name="cordova-plugin-vibration" source="npm" />
   <gap:plugin name="nl.x-services.plugins.calendar" />
   <gap:plugin name="pushbots-cordova-plugin" source="npm" />
-  <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
   <!-- Icons -->
   <icon src="icon.png"/>
   <!-- iOS 7.0+ -->
@@ -74,6 +73,7 @@
   <icon src="res/icon/android/hdpi.png" platform="android" qualifier="hdpi" />
   <icon src="res/icon/android/xhdpi.png" platform="android" qualifier="xhdpi" />
   <icon src="res/icon/android/xxhdpi.png" platform="android" qualifier="xxhdpi" />
+  <icon src="res/icon/android/xxxhdpi.png" platform="android" qualifier="xxxhdpi" />
   <!-- Splash Screens -->
   <splash src="splash.png" />
   <!-- iOS -->
@@ -105,6 +105,7 @@
   <splash src="res/screen/android/landscape-xxhdpi.png" platform="android" qualifier="land-xxhdpi" />
   <splash src="res/screen/android/portrait-xxxhdpi.png" platform="android" qualifier="port-xxxhdpi" />
   <splash src="res/screen/android/landscape-xxxhdpi.png" platform="android" qualifier="land-xxxhdpi" />
+  <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
   <access origin="*"/>
   <gap:plugin name="cordova-plugin-statusbar" source="npm" />
   <preference name="StatusBarOverlaysWebView" value="false" />
