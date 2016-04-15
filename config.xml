@@ -39,7 +39,7 @@
   <gap:plugin name="cordova-plugin-network-information" source="npm" />
   <gap:plugin name="cordova-plugin-splashscreen" source="npm"/>
   <gap:plugin name="cordova-plugin-vibration" source="npm" />
-  <gap:plugin name="cordova-plugin-calendar" source="npm" />
+  <gap:plugin name="nl.x-services.plugins.calendar" />
   <gap:plugin name="pushbots-cordova-plugin" source="npm" />
   <!-- Icons -->
   <icon src="icon.png"/>
