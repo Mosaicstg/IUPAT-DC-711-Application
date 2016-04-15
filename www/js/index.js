@@ -36,17 +36,42 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+		
 		document.addEventListener('deviceready', function () {
-			var Pushbots = PushbotsPlugin.initialize("56e085f717795979748b4567", {"android":{"sender_id":"745856988600"}});
-		//iOS only
-		//Reset Badge
-		Pushbots.resetBadge();
-		//Set badge
-		Pushbots.setBadge(0);
-		}, false);
-		app.receivedEvent('deviceready');
-    },
+		
+			window.plugins.PushbotsPlugin.initialize("56e085f717795979748b4567", {"android":{"sender_id":"745856988600"}});	
+					
+			//iOS only
+			//Reset Badge
+			window.plugins.PushbotsPlugin.resetBadge();
+			//Set badge
+			window.plugins.PushbotsPlugin.setBadge(0);
+			
+			app.receivedEvent('deviceready');
+		
+			// Should be called once app receive the notification
+			window.plugins.PushbotsPlugin.on("notification:received", function(data){
+				console.log("received:" + JSON.stringify(data));
+			});
 	
+			// Should be called once the notification is clicked
+			window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
+				console.log("clicked:" + JSON.stringify(data));
+			});
+			
+			// Should be called once the device is registered successfully with Apple or Google servers
+			window.plugins.PushbotsPlugin.on("registered", function(token){
+				console.log(token);
+			});
+	
+			window.plugins.PushbotsPlugin.getRegistrationId(function(token){
+				console.log("Registration Id:" + token);
+			});
+
+		}, false);
+		
+    },
+		
 	// Update DOM on a Received Event
 	receivedEvent: function(id) {
 		
@@ -58,15 +83,7 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-		
-		// Should be called once the device is registered successfully with Apple or Google servers
-		Pushbots.on("registered", function(token){
-			console.log(token);
-		});
-		
-		Pushbots.getRegistrationId(function(token){
-			console.log("Registration Id:" + token);
-		});
-				
+						
 	}
+		
 };
