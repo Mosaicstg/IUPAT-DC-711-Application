@@ -107,7 +107,7 @@
   <splash src="res/screen/android/landscape-xxhdpi.png" platform="android" qualifier="land-xxhdpi" />
   <splash src="res/screen/android/portrait-xxxhdpi.png" platform="android" qualifier="port-xxxhdpi" />
   <splash src="res/screen/android/landscape-xxxhdpi.png" platform="android" qualifier="land-xxxhdpi" />
-  <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
+  <gap:plugin name="cordova-plugin-whitelist" source="npm" />
   <access origin="*"/>
   <gap:plugin name="cordova-plugin-statusbar" source="npm" />
   <preference name="StatusBarOverlaysWebView" value="false" />
