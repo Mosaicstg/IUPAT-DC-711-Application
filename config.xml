@@ -40,7 +40,7 @@
   <plugin name="cordova-plugin-network-information" source="npm" />
   <plugin name="cordova-plugin-splashscreen" source="npm"/>
   <plugin name="cordova-plugin-vibration" source="npm" />
-  <plugin name="nl.x-services.plugins.calendar" />
+  <plugin name="cordova-plugin-calendar" source="npm" />
   <plugin name="pushbots-cordova-plugin" source="npm" />
   <!-- Icons -->
   <icon src="icon.png"/>
