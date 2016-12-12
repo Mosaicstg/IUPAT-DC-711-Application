@@ -191,3 +191,7 @@ div[data-event-id] .details {
 .gform_body .gform_button {
 	border: 0 !important;
 }
+
+.supsystic-tables-wrap {
+	visibility: visible !important;
+}
