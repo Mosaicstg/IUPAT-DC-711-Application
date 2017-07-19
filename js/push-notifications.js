@@ -7,7 +7,7 @@ function prepareToRegister() {
 		push = PushNotification.init(
 			{
 				"android": {
-					"senderID": "745856988600"
+					"senderID": "720859137196"
 				},
 				"ios": {
 					"alert": "true",
