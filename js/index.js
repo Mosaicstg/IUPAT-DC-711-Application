@@ -39,7 +39,7 @@ var app = {
 		
 		document.addEventListener('deviceready', function () {
 		
-			window.plugins.PushbotsPlugin.initialize("56e085f717795979748b4567", {"android":{"sender_id":"745856988600"}});	
+			window.plugins.PushbotsPlugin.initialize("56e085f717795979748b4567", {"android":{"sender_id":"720859137196"}});	
 					
 			//iOS only
 			//Reset Badge
