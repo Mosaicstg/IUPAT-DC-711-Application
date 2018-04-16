@@ -4,6 +4,7 @@
   <description>IUPAT DC 711 App</description>
   <author href="http://mosaicstg.com" email="services@mosaicstg.com">Mosaic</author>
   <content src="index.html"/>
+  <preference name="phonegap-version" value="cli-8.0.0" />
   <preference name="permissions" value="none"/>
   <preference name="orientation" value="portrait"/>
   <preference name="target-device" value="universal"/>
