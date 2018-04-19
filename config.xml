@@ -49,6 +49,7 @@
   <plugin name="pushbots-cordova-plugin" source="npm" />
   <!-- Icons -->
   <icon src="icon.png"/>
+  <icon src="res/icon/ios/icon-1024.png" platform="ios" width="1024" height="1024" />
   <!-- iOS 7.0+ -->
   <!-- iPhone 6 / 6+ -->
   <icon src="res/icon/ios/icon-60@3x.png" platform="ios" width="180" height="180" />
