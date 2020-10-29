@@ -1,126 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.mosaicstg.dc711" version="2.0.1">
-  <name>DC 711</name>
-  <description>IUPAT DC 711 App</description>
-  <author href="http://mosaicstg.com" email="services@mosaicstg.com">Mosaic</author>
-  <content src="index.html"/>
-  <preference name="phonegap-version" value="cli-8.0.0" />
-  <preference name="permissions" value="none"/>
-  <preference name="orientation" value="portrait"/>
-  <preference name="target-device" value="universal"/>
-  <preference name="fullscreen" value="true"/>
-  <preference name="webviewbounce" value="true"/>
-  <preference name="prerendered-icon" value="true"/>
-  <preference name="stay-in-webview" value="false"/>
-  <preference name="ios-statusbarstyle" value="black-opaque"/>
-  <preference name="detect-data-types" value="true"/>
-  <preference name="exit-on-suspend" value="false"/>
-  <preference name="show-splash-screen-spinner" value="true"/>
-  <preference name="auto-hide-splash-screen" value="true"/>
-  <preference name="disable-cursor" value="false"/>
-  <preference name="android-versionCode" value="267" />
-  <preference name="android-minSdkVersion" value="16"/>
-  <preference name="android-installLocation" value="auto"/>
-  <preference name="android-build-tool" value="gradle" />
-  <!-- Plugins -->
-  <plugin name="cordova-plugin-battery-status" source="npm" />
-  <plugin name="cordova-plugin-calendar" source="npm">
-    <variable name="CALENDAR_USAGE_DESCRIPTION" value="App would like to access the calendar to add events." />
-  </plugin>
-  <plugin name="cordova-plugin-device" source="npm"/>
-  <plugin name="cordova-plugin-dialogs" source="npm"/>
-  <plugin name="cordova-plugin-file" source="npm" />
-  <plugin name="cordova-plugin-file-transfer" source="npm"/>
-  <plugin name="cordova-plugin-geolocation" source="npm"/>
-  <plugin name="cordova-plugin-globalization" source="npm"/>
-  <plugin name="cordova-plugin-inappbrowser" source="npm"/>
-  <plugin name="cordova-plugin-network-information" source="npm" />
-  <plugin name="cordova-plugin-splashscreen" source="npm"/>
-  <plugin name="cordova-plugin-vibration" source="npm" />
-  <plugin name="pushbots-cordova-plugin" source="npm" />
-  <!-- Icons -->
-  <icon src="icon.png"/>
-  <icon src="res/icon/ios/icon-1024.png" platform="ios" width="1024" height="1024" />
-  <!-- iOS 7.0+ -->
-  <!-- iPhone 6 / 6+ -->
-  <icon src="res/icon/ios/icon-60@3x.png" platform="ios" width="180" height="180" />
-  <!-- iPhone / iPod Touch  -->
-  <icon src="res/icon/ios/icon-60.png" platform="ios" width="60" height="60" />
-  <icon src="res/icon/ios/icon-60@2x.png" platform="ios" width="120" height="120" />
-  <!-- iPad -->
-  <icon src="res/icon/ios/icon-76.png" platform="ios" width="76" height="76" />
-  <icon src="res/icon/ios/icon-76@2x.png" platform="ios" width="152" height="152" />
-  <!-- Spotlight Icon -->
-  <icon src="res/icon/ios/icon-40.png" platform="ios" width="40" height="40" />
-  <icon src="res/icon/ios/icon-40@2x.png" platform="ios" width="80" height="80" />
-  <!-- iOS 6.1 -->
-  <!-- iPhone / iPod Touch -->
-  <icon src="res/icon/ios/icon.png" platform="ios" width="57" height="57" />
-  <icon src="res/icon/ios/icon@2x.png" platform="ios" width="114" height="114" />
-  <!-- iPad -->
-  <icon src="res/icon/ios/icon-72.png" platform="ios" width="72" height="72" />
-  <icon src="res/icon/ios/icon-72@2x.png" platform="ios" width="144" height="144" />
-  <!-- iPhone Spotlight and Settings Icon -->
-  <icon src="res/icon/ios/icon-small.png" platform="ios" width="29" height="29" />
-  <icon src="res/icon/ios/icon-small@2x.png" platform="ios" width="58" height="58" />
-  <!-- iPad Spotlight and Settings Icon -->
-  <icon src="res/icon/ios/icon-50.png" platform="ios" width="50" height="50" />
-  <icon src="res/icon/ios/icon-50@2x.png" platform="ios" width="100" height="100" />
-  <!-- Android -->
-  <icon src="res/icon/android/ldpi.png" platform="android" qualifier="ldpi" />
-  <icon src="res/icon/android/mdpi.png" platform="android" qualifier="mdpi" />
-  <icon src="res/icon/android/hdpi.png" platform="android" qualifier="hdpi" />
-  <icon src="res/icon/android/xhdpi.png" platform="android" qualifier="xhdpi" />
-  <icon src="res/icon/android/xxhdpi.png" platform="android" qualifier="xxhdpi" />
-  <icon src="res/icon/android/xxxhdpi.png" platform="android" qualifier="xxxhdpi" />
-  <!-- Splash Screens -->
-  <splash src="splash.png" />
-  <!-- iOS -->
-  <!-- iPhone and iPod touch -->
-  <splash src="res/screen/ios/Default.png" platform="ios" width="320" height="480" />
-  <splash src="res/screen/ios/Default@2x.png" platform="ios" width="640" height="960" />
-  <!-- iPhone 5 / iPod Touch (5th Generation) -->
-  <splash src="res/screen/ios/Default-568h@2x.png" platform="ios" width="640" height="1136" />
-  <!-- iPhone 6 -->
-  <splash src="res/screen/ios/Default-667h@2x.png" platform="ios" width="750" height="1334" />
-  <splash src="res/screen/ios/Default-Portrait-736h@3x.png" platform="ios" width="1242" height="2208" />
-  <splash src="res/screen/ios/Default-Landscape-736h@3x.png" platform="ios" width="2208" height="1242" />
-  <!-- iPad -->
-  <splash src="res/screen/ios/Default-Portrait.png" platform="ios" width="768" height="1024" />
-  <splash src="res/screen/ios/Default-Landscape.png" platform="ios" width="1024" height="768" />
-  <!-- Retina iPad -->
-  <splash src="res/screen/ios/Default-Portrait@2x.png" platform="ios" width="1536" height="2048" />
-  <splash src="res/screen/ios/Default-Landscape@2x.png" platform="ios" width="2048" height="1536" />
-  <!-- Android -->
-  <splash src="res/screen/android/portrait-ldpi.png" platform="android" qualifier="port-ldpi" />
-  <splash src="res/screen/android/landscape-ldpi.png" platform="android" qualifier="land-ldpi" />
-  <splash src="res/screen/android/portrait-mdpi.png" platform="android" qualifier="port-mdpi" />
-  <splash src="res/screen/android/landscape-mdpi.png" platform="android" qualifier="land-mdpi" />
-  <splash src="res/screen/android/portrait-hdpi.png" platform="android" qualifier="port-hdpi" />
-  <splash src="res/screen/android/landscape-hdpi.png" platform="android" qualifier="land-hdpi" />
-  <splash src="res/screen/android/portrait-xhdpi.png" platform="android" qualifier="port-xhdpi" />
-  <splash src="res/screen/android/landscape-xhdpi.png" platform="android" qualifier="land-xhdpi" />
-  <splash src="res/screen/android/portrait-xxhdpi.png" platform="android" qualifier="port-xxhdpi" />
-  <splash src="res/screen/android/landscape-xxhdpi.png" platform="android" qualifier="land-xxhdpi" />
-  <splash src="res/screen/android/portrait-xxxhdpi.png" platform="android" qualifier="port-xxxhdpi" />
-  <splash src="res/screen/android/landscape-xxxhdpi.png" platform="android" qualifier="land-xxxhdpi" />
-  <plugin name="cordova-plugin-whitelist" source="npm" />
-  <access origin="*"/>
-  <plugin name="cordova-plugin-statusbar" source="npm" />
-  <preference name="StatusBarOverlaysWebView" value="false" />
-  <preference name="StatusBarBackgroundColor" value="#f2c642" />
-  <preference name="StatusBarStyle" value="default" />
-  <allow-intent href="http://*/*"/>
-  <allow-intent href="https://*/*"/>
-  <allow-intent href="tel:*"/>
-  <allow-intent href="sms:*"/>
-  <allow-intent href="mailto:*"/>
-  <allow-intent href="geo:*"/>
-  <platform name="android">
-    <allow-intent href="market:*"/>
-  </platform>
-  <platform name="ios">
-    <allow-intent href="itms:*"/>
-    <allow-intent href="itms-apps:*"/>
-  </platform>
+<widget id="com.mosaicstg.dc711"
+        version="2.1.0"
+        ios-CFBundleVersion="3.0.0"
+        android-versionCode="300"
+        xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0">
+
+    <name>DC 711</name>
+    <description>IUPAT DC 711 App</description>
+    <author href="https://mosaicstg.com" email="services@mosaicstg.com">Mosaic</author>
+
+    <content src="index.html"/>
+
+    <!-- Access -->
+    <access origin="*"/>
+
+    <!-- Allow-Intent -->
+    <allow-intent href="http://*/*"/>
+    <allow-intent href="https://*/*"/>
+    <allow-intent href="tel:*"/>
+    <allow-intent href="sms:*"/>
+    <allow-intent href="mailto:*"/>
+    <allow-intent href="geo:*"/>
+
+    <!-- Plugins -->
+    <plugin name="cordova-plugin-battery-status" source="npm"/>
+    <plugin name="cordova-plugin-calendar" source="npm">
+        <variable name="CALENDAR_USAGE_DESCRIPTION" value="App would like to access the calendar to add events."/>
+    </plugin>
+    <plugin name="cordova-plugin-device" source="npm"/>
+    <plugin name="cordova-plugin-dialogs" source="npm"/>
+    <plugin name="cordova-plugin-file" source="npm"/>
+    <plugin name="cordova-plugin-file-transfer" source="npm"/>
+    <plugin name="cordova-plugin-geolocation" source="npm"/>
+    <plugin name="cordova-plugin-globalization" source="npm"/>
+    <plugin name="cordova-plugin-inappbrowser" source="npm"/>
+    <plugin name="cordova-plugin-network-information" source="npm"/>
+    <plugin name="cordova-plugin-splashscreen" source="npm"/>
+    <plugin name="cordova-plugin-vibration" source="npm"/>
+    <plugin name="pushbots-cordova-plugin" source="npm"/>
+    <plugin name="cordova-plugin-whitelist" source="npm"/>
+    <plugin name="cordova-plugin-statusbar" source="npm"/>
+
+    <!-- Preferences -->
+    <preference name="Orientation" value="portrait"/>
+    <!-- iOS only preferences -->
+    <preference name="target-device" value="universal"/>
+    <preference name="TopActivityIndicator" value="white"/>
+    <!-- Android only preferences -->
+    <preference name="KeepRunning" value="false"/>
+
+    <!-- Platforms -->
+    <!-- iOS -->
+    <platform name="ios">
+        <!-- Allow-Intent -->
+        <allow-intent href="itms:*"/>
+        <allow-intent href="itms-apps:*"/>
+
+        <!-- Icons -->
+
+    </platform>
+
+    <!-- Android -->
+    <platform name="android">
+        <!-- Allow-Intent -->
+        <allow-intent href="market:*"/>
+
+        <!-- Icons -->
+
+    </platform>
 </widget>
