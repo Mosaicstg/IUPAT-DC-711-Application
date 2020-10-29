@@ -1,0 +1,19 @@
+{
+  "name": "iupat-dc-711-application",
+  "version": "1.0.0",
+  "description": "DC 711 App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mosaicstg/IUPAT-DC-711-Application.git"
+  },
+  "author": "Mosaic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mosaicstg/IUPAT-DC-711-Application/issues"
+  },
+  "homepage": "https://github.com/Mosaicstg/IUPAT-DC-711-Application#readme"
+}
