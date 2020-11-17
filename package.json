@@ -1,7 +1,7 @@
 {
   "name": "iupat-dc-711-application",
   "version": "1.0.0",
-  "description": "DC 711 App",
+  "description": "DC 711 Application",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

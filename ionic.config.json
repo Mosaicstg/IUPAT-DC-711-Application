@@ -1,7 +1,7 @@
 {
-  "name": "iupat-dc-711-application",
-  "type": "custom",
+  "name": "IUPAT DC 711 - Application",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "type": "custom"
 }
