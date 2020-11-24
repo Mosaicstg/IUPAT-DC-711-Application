@@ -17,7 +17,7 @@
   <div data-role="header" data-theme="a" class="main-screen-header"><img class="banner" src="img/banner.jpg" alt="" width="100%" /></div>
   <div data-role="content" class="main-nav-container">
     <div class="ui-grid-a main-nav-grid" data-theme="a">
-      <div class="ui-block-a"><a href="#news" data-transition="slide"><img src="img/news-icon.png" width="50%" alt=""/><br />
+      <div class="ui-block-a"><a href="#news" class="refresh_news" data-transition="slide"><img src="img/news-icon.png" width="50%" alt=""/><br />
         News &amp; Alerts</a></div>
       <div class="ui-block-b blue"><a href="#meetings" data-transition="slide"><img src="img/meetings-icon.png" width="50%" alt=""/><br />
         Meeting Updates</a></div>
@@ -38,7 +38,6 @@
 <div data-role="page" id="news" data-theme="a">
   <div data-role="header" class="internal-header" data-add-back-btn="true" data-theme="a" data-position="fixed">
     <h1>News &amp; Alerts</h1>
-    <a href="javascript:void(0);" class="refresh_news ui-btn-right">Refresh</a>
   </div>
   <div data-role="content">
     <div id="newslist" class="newslist"></div>
@@ -267,16 +266,12 @@
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/storage.js"></script>
 <script type="text/javascript" src="js/moment.js"></script>
-<script type="text/javascript" src="js"></script>
 <script type="text/javascript" src="js/newsfeed.js"></script>
 <script type="text/javascript" src="js/meetingsfeed.js"></script>
 <script type="text/javascript" src="js/oauth.js"></script>
 <script type="text/javascript" src="js/calendar_feed.js"></script>
 <script type="text/javascript" src="js/dispatchfeed.js"></script>
 <script type="text/javascript" src="js/contactformfeed.js"></script>
-<!--
-<script type="text/javascript" src="js/push-notifications.js"></script>
--->
 <script type="text/javascript">
 	app.initialize();
 </script>
