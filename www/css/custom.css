@@ -74,6 +74,7 @@ a {
 }
 
 .internal-header {
+	padding-top: 50px;
 	border-bottom: 3px solid #f2c642;
 }
 
