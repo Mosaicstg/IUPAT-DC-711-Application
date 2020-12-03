@@ -128,7 +128,7 @@ function updateCalendar(force) {
 				type: "GET",
 				data: getData,
 				url: url,
-				error: outputNewsError(elem, 'Unable to connect to load events.  Are you connected to the internet?', 'noconnection'),
+				//error: outputNewsError(elem, 'Unable to connect to load events.  Are you connected to the internet?', 'noconnection'),
 						//function (jqXHR, textStatus, errorThrown) {
 					//doLog( jqXHR );
 					//doLog( textStatus );
