@@ -45,7 +45,7 @@ function prepareToRegister() {
 }
 
 function register(pushData) {
-	var pushRegistrationUrl = 'http://dc711.net/pnfw/register/';
+	var pushRegistrationUrl = 'https://dc711.net/pnfw/register/';
 
 	// Set defaults
 	var data = {

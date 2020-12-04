@@ -5,7 +5,7 @@ function updateNews( force ) {
   if ( force || storage.isStale( newsKey, '2 hours' ) ) {
     $.ajax( {
       type: "GET",
-      url: "http://dc711.net/api/get_category_posts/?category_id=7",
+      url: "https://dc711.net/api/get_category_posts/?category_id=7",
       dataType: 'jsonp',
       timeout: 5000,
       error: function ( x, t, m ) {

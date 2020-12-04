@@ -1,7 +1,7 @@
 jQuery(function($) {
 	$.ajax({
 		type: "GET",
-		url: 'http://dc711.net/api/get_page/?slug=contact-us',
+		url: 'https://dc711.net/api/get_page/?slug=contact-us',
 		dataType: 'jsonp',
 		error: function(){
 			alert( 'Unable to load feed, Incorrect path or invalid feed' );

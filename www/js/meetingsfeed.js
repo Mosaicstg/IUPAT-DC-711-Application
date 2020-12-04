@@ -3,7 +3,7 @@
 jQuery(function($) {
      $.ajax({
         type: "GET",
-        url: "http://dc711.net/api/get_category_posts/?category_id=8",
+        url: "https://dc711.net/api/get_category_posts/?category_id=8",
         dataType: 'jsonp',
         error: function(){
             alert( 'Unable to load feed, Incorrect path or invalid feed' );
