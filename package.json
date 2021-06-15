@@ -18,5 +18,10 @@
   "homepage": "https://github.com/Mosaicstg/IUPAT-DC-711-Application#readme",
   "devDependencies": {
     "pushbots-cordova-plugin": "^1.6.21"
+  },
+  "cordova": {
+    "plugins": {
+      "pushbots-cordova-plugin": {}
+    }
   }
 }
