@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Mosaicstg/IUPAT-DC-711-Application#readme",
   "devDependencies": {
+    "cordova-android": "^9.1.0",
     "pushbots-cordova-plugin": "^1.6.21"
   },
   "cordova": {
