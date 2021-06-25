@@ -93,4 +93,7 @@
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-calendar" />
     <preference name="android-build-tool" value="gradle" />
+    <edit-config file="*-Info.plist" mode="merge" target="NSLocationAlwaysUsageDescription">
+        <string>Need calendar access to allow users to add events to their calendars</string>
+    </edit-config>
 </widget>
