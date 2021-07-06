@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="302" id="com.mosaicstg.dc711" version="2.1.10" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="302" id="com.mosaicstg.dc711" version="2.1.9" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>DC 711</name>
     <description>IUPAT DC 711 Application</description>
     <author email="services@mosaicstg.com" href="https://mosaicstg.com">Mosaic</author>
@@ -92,7 +92,7 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^4.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-calendar" />
-    <gap:plugin name="pushbots-cordova-plugin" spec="1.6.21" />
+    <plugin name="pushbots-cordova-plugin" spec="1.6.21" />
     <preference name="android-build-tool" value="gradle" />
     <edit-config file="*-Info.plist" mode="merge" target="NSCalendarsUsageDescription">
         <string>Need calendar access to allow users to add events to their calendars</string>
