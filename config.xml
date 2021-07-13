@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="302" id="com.mosaicstg.dc711" version="2.1.14" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="302" id="com.mosaicstg.dc711" version="2.1.15" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>DC 711</name>
     <description>IUPAT DC 711 Application</description>
     <author email="services@mosaicstg.com" href="https://mosaicstg.com">Mosaic</author>
@@ -10,7 +10,6 @@
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
-    <allow-intent href="geo:*" />
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="#292929" />
     <preference name="StatusBarStyle" value="lightcontent" />
