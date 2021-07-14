@@ -45,7 +45,12 @@
             <string>Need calendar access to allow users to add events to their calendars</string>
         </edit-config>
         <edit-config file="*-Info.plist" mode="overwrite" target="UIBackgroundModes">
-            <string></string>
+            <key>UIBackgroundModes</key>
+            <array>
+                <string>fetch</string>
+                <string>remote-notification</string>
+                <string>processing</string>
+            </array>
         </edit-config>
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
