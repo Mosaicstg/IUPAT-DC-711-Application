@@ -44,7 +44,7 @@
         <edit-config file="*-Info.plist" mode="merge" target="NSCalendarsUsageDescription">
             <string>Need calendar access to allow users to add events to their calendars</string>
         </edit-config>
-        <edit-config file="*-Info.plist" mode="overwrite" platform="ios" target="UIBackgroundModes">
+        <edit-config file="*-Info.plist" mode="overwrite" target="UIBackgroundModes">
             <array>
                 <string>external-accessory</string>
                 <string>fetch</string>
