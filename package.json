@@ -15,8 +15,5 @@
   "bugs": {
     "url": "https://github.com/Mosaicstg/IUPAT-DC-711-Application/issues"
   },
-  "homepage": "https://github.com/Mosaicstg/IUPAT-DC-711-Application#readme",
-  "devDependencies": {
-    "cordova-android": "^9.1.0"
-  }
+  "homepage": "https://github.com/Mosaicstg/IUPAT-DC-711-Application#readme"
 }
