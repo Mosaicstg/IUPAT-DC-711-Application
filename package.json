@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Mosaicstg/IUPAT-DC-711-Application#readme",
   "devDependencies": {
     "@ionic/app-scripts": "^3.2.4",
+    "cordova-android": "^10.1.0",
     "cordova-ios": "^6.2.0",
     "cordova-plugin-calendar": "5.1.5",
     "cordova-plugin-device": "2.0.3",
@@ -45,12 +46,10 @@
       "onesignal-cordova-plugin": {}
     },
     "platforms": [
-      "android",
       "ios"
     ]
   },
   "dependencies": {
-    "@ionic-native/onesignal": "^5.35.0",
-    "cordova-android": "9.1.0"
+    "@ionic-native/onesignal": "^5.35.0"
   }
 }
